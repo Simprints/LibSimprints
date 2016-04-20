@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class Identification implements Parcelable {
 
     private String guid;
-    private float confidence;
+    private double confidence;
 
     /**
      * Empty constructor
@@ -21,7 +21,7 @@ public class Identification implements Parcelable {
      * @param guid
      * @param confidence
      */
-    public Identification(String guid, float confidence) {
+    public Identification(String guid, double confidence) {
         this.guid = guid;
         this.confidence = confidence;
     }
@@ -51,7 +51,7 @@ public class Identification implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.guid);
-        dest.writeFloat(this.confidence);
+        dest.writeDouble(this.confidence);
     }
 
     public String getGuid() {
@@ -62,11 +62,11 @@ public class Identification implements Parcelable {
         this.guid = guid;
     }
 
-    public float getConfidence() {
+    public double getConfidence() {
         return confidence;
     }
 
-    public void setConfidence(float confidence) {
+    public void setConfidence(double confidence) {
         this.confidence = confidence;
     }
 }
