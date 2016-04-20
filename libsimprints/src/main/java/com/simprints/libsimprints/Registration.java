@@ -2,7 +2,6 @@ package com.simprints.libsimprints;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.Arrays;
 
@@ -43,23 +42,19 @@ public class Registration implements Parcelable {
         }
         if (leftThumb != null) {
             this.leftThumb = Arrays.copyOf(leftThumb, leftThumb.length);
-        }}
+        }
+    }
 
     protected Registration(Parcel in) {
         this.guid = in.readString();
-        Log.w("Simprints", "Registration guid = " + guid);
         this.rightIndex = new byte[in.readInt()];
         in.readByteArray(this.rightIndex);
-        Log.w("Simprints", "Registration rightIndex = " + rightIndex);
         this.rightThumb = new byte[in.readInt()];
         in.readByteArray(this.rightThumb);
-        Log.w("Simprints", "Registration rightThumb = " + rightThumb);
         this.leftIndex = new byte[in.readInt()];
         in.readByteArray(this.leftIndex);
-        Log.w("Simprints", "Registration leftIndex  = " + leftIndex);
         this.leftThumb = new byte[in.readInt()];
         in.readByteArray(this.leftThumb);
-        Log.w("Simprints", "Registration leftThumb  = " + leftThumb);
     }
 
     public static final Creator<Registration> CREATOR = new Creator<Registration>() {
