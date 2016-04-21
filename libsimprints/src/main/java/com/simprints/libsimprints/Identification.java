@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 public class Identification implements Parcelable {
 
+    /* This is a comment to prove symbolic linking works and here as well */
+
     private String guid;
     private double confidence;
 
@@ -18,8 +20,8 @@ public class Identification implements Parcelable {
     /**
      * This constructor creates a new identification
      *
-     * @param guid
-     * @param confidence
+     * @param guid A string containing the guid
+     * @param confidence A double containing the (matching) confidence
      */
     public Identification(String guid, double confidence) {
         this.guid = guid;
@@ -28,7 +30,7 @@ public class Identification implements Parcelable {
 
     protected Identification(Parcel in) {
         guid = in.readString();
-        confidence = in.readFloat();
+        confidence = in.readDouble();
     }
 
     public static final Creator<Identification> CREATOR = new Creator<Identification>() {
