@@ -8,7 +8,7 @@ public class Identification implements Parcelable {
     /* This is a comment to prove symbolic linking works and here as well */
 
     private String guid;
-    private double confidence;
+    private float confidence;
 
     /**
      * Empty constructor
@@ -23,14 +23,14 @@ public class Identification implements Parcelable {
      * @param guid A string containing the guid
      * @param confidence A double containing the (matching) confidence
      */
-    public Identification(String guid, double confidence) {
+    public Identification(String guid, float confidence) {
         this.guid = guid;
         this.confidence = confidence;
     }
 
     protected Identification(Parcel in) {
         guid = in.readString();
-        confidence = in.readDouble();
+        confidence = in.readFloat();
     }
 
     public static final Creator<Identification> CREATOR = new Creator<Identification>() {
@@ -64,11 +64,11 @@ public class Identification implements Parcelable {
         this.guid = guid;
     }
 
-    public double getConfidence() {
+    public float getConfidence() {
         return confidence;
     }
 
-    public void setConfidence(double confidence) {
+    public void setConfidence(float confidence) {
         this.confidence = confidence;
     }
 }
