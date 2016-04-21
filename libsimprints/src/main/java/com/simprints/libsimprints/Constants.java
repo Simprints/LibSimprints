@@ -12,11 +12,11 @@ public class Constants {
     final static public int FEMALE = 1;
     final static public int OTHER = 2;
 
-    // finger id contants
+    // finger id constants
     final static public int RIGHT_INDEX = 0;
     final static public int RIGHT_THUMB = 1;
-    final static public int LEFT_INDEX  = 2;
-    final static public int LEFT_THUMB  = 3;
+    final static public int LEFT_THUMB  = 2;
+    final static public int LEFT_INDEX  = 3;
 
     // content provider
     public static final String PACKAGE = "com.simprints.id";
