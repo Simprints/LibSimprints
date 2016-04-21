@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.testlibsimprints;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

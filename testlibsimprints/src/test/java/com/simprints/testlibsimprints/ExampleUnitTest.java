@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.testlibsimprints;
 
 import org.junit.Test;
 
