@@ -53,7 +53,7 @@ public class Identification implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.guid);
-        dest.writeDouble(this.confidence);
+        dest.writeFloat(this.confidence);
     }
 
     public String getGuid() {
