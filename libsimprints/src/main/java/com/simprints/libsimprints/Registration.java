@@ -45,6 +45,10 @@ public class Registration implements Parcelable {
         }
     }
 
+    public void register() {
+
+    }
+
     protected Registration(Parcel in) {
         this.guid = in.readString();
         this.rightIndex = new byte[in.readInt()];
