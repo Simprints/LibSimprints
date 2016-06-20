@@ -154,4 +154,29 @@ public class Registration implements Parcelable {
     public void setLeftThumb(byte[] leftThumb) {
         this.leftThumb = leftThumb;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o instanceof Registration) {
+            Registration otherRegistration = (Registration)o;
+            return guid.equals(otherRegistration.guid) &&
+                    Arrays.equals(rightIndex, otherRegistration.rightIndex) &&
+                    Arrays.equals(rightThumb, otherRegistration.rightThumb) &&
+                    Arrays.equals(leftIndex, otherRegistration.leftIndex) &&
+                    Arrays.equals(leftThumb, otherRegistration.leftThumb);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return guid.hashCode() ^
+                Arrays.hashCode(rightIndex) ^
+                Arrays.hashCode(rightThumb) ^
+                Arrays.hashCode(leftIndex) ^
+                Arrays.hashCode(leftThumb);
+    }
 }
