@@ -123,7 +123,7 @@ public class Registration implements Parcelable {
         this.guid = guid;
     }
 
-    public byte[] getTemplateRightIndex() {
+    public byte[] getRightIndex() {
         return rightIndex;
     }
 
