@@ -3,7 +3,7 @@ package com.simprints.libsimprints;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Identification implements Parcelable {
+public class Identification implements Parcelable, Comparable<Identification> {
 
     private String guid;
     private float confidence;
@@ -18,7 +18,7 @@ public class Identification implements Parcelable {
     /**
      * This constructor creates a new identification
      *
-     * @param guid A string containing the guid
+     * @param guid       A string containing the guid
      * @param confidence A float containing the (matching) confidence
      */
     public Identification(String guid, float confidence) {

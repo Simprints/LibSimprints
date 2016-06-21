@@ -123,7 +123,7 @@ public class Registration implements Parcelable {
         this.guid = guid;
     }
 
-    public byte[] getTemplateRightIndex() {
+    public byte[] getRightIndex() {
         return rightIndex;
     }
 
@@ -155,7 +155,7 @@ public class Registration implements Parcelable {
         this.leftThumb = leftThumb;
     }
 
-     @Override
+    @Override
     public boolean equals(Object o) {
         if (o == this) {
             return true;
