@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class Registration implements Parcelable {
 
     private String guid;
@@ -23,11 +24,11 @@ public class Registration implements Parcelable {
     /**
      * This constructor creates a new registration
      *
-     * @param guid
-     * @param rightIndex
-     * @param rightThumb
-     * @param leftIndex
-     * @param leftThumb
+     * @param guid Global user id
+     * @param rightIndex Right index template
+     * @param rightThumb Right thumb template
+     * @param leftIndex Left index template
+     * @param leftThumb Left thumb template
      */
     public Registration(String guid, byte[] rightIndex, byte[] rightThumb, byte[] leftIndex, byte[] leftThumb) {
         this.guid = guid;

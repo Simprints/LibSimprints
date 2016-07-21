@@ -2,7 +2,9 @@ package com.simprints.libsimprints;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
+@SuppressWarnings("unused")
 public class Identification implements Parcelable, Comparable<Identification> {
 
     private String guid;
@@ -71,7 +73,7 @@ public class Identification implements Parcelable, Comparable<Identification> {
     }
 
     @Override
-    public int compareTo(Identification otherId) {
+    public int compareTo(@NonNull Identification otherId) {
         if (confidence == otherId.confidence) {
             return 0;
         } else if (confidence < otherId.confidence) {
