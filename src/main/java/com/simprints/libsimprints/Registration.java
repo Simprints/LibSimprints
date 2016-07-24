@@ -3,63 +3,35 @@ package com.simprints.libsimprints;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class Registration implements Parcelable {
 
     private String guid;
-    private byte[] rightIndex;
-    private byte[] rightThumb;
-    private byte[] leftIndex;
-    private byte[] leftThumb;
-
-    /**
-     * Empty constructor
-     */
-    public Registration() {
-
-    }
+    private Map<FingerIdentifier, byte[]> templates;
 
     /**
      * This constructor creates a new registration
      *
      * @param guid Global user id
-     * @param rightIndex Right index template
-     * @param rightThumb Right thumb template
-     * @param leftIndex Left index template
-     * @param leftThumb Left thumb template
      */
-    public Registration(String guid, byte[] rightIndex, byte[] rightThumb, byte[] leftIndex, byte[] leftThumb) {
+    public Registration(String guid) {
         this.guid = guid;
-        if (rightIndex != null) {
-            this.rightIndex = Arrays.copyOf(rightIndex, rightIndex.length);
-        }
-        if (rightThumb != null) {
-            this.rightThumb = Arrays.copyOf(rightThumb, rightThumb.length);
-        }
-        if (leftIndex != null) {
-            this.leftIndex = Arrays.copyOf(leftIndex, leftIndex.length);
-        }
-        if (leftThumb != null) {
-            this.leftThumb = Arrays.copyOf(leftThumb, leftThumb.length);
-        }
-    }
-
-    public void register() {
-
+        templates = new HashMap<>();
     }
 
     protected Registration(Parcel in) {
         this.guid = in.readString();
-        this.rightIndex = new byte[in.readInt()];
-        in.readByteArray(this.rightIndex);
-        this.rightThumb = new byte[in.readInt()];
-        in.readByteArray(this.rightThumb);
-        this.leftIndex = new byte[in.readInt()];
-        in.readByteArray(this.leftIndex);
-        this.leftThumb = new byte[in.readInt()];
-        in.readByteArray(this.leftThumb);
+        int nbOfTemplates = in.readInt();
+        this.templates = new HashMap<>(nbOfTemplates);
+        for (int i = 0; i < nbOfTemplates; i++) {
+            FingerIdentifier fingerId = FingerIdentifier.values()[in.readInt()];
+            byte[] fingerTemplate = new byte[in.readInt()];
+            in.readByteArray(fingerTemplate);
+            this.templates.put(fingerId, fingerTemplate);
+        }
     }
 
     public static final Creator<Registration> CREATOR = new Creator<Registration>() {
@@ -82,37 +54,11 @@ public class Registration implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(guid);
-        if (rightIndex == null) {
-            dest.writeInt(0);
-            dest.writeByteArray(new byte[0]);
-        }
-        else {
-            dest.writeInt(rightIndex.length);
-            dest.writeByteArray(rightIndex);
-        }
-        if (rightThumb == null) {
-            dest.writeInt(0);
-            dest.writeByteArray(new byte[0]);
-        }
-        else {
-            dest.writeInt(rightThumb.length);
-            dest.writeByteArray(rightThumb);
-        }
-        if (leftIndex == null) {
-            dest.writeInt(0);
-            dest.writeByteArray(new byte[0]);
-        }
-        else {
-            dest.writeInt(leftIndex.length);
-            dest.writeByteArray(leftIndex);
-        }
-        if (leftThumb == null) {
-            dest.writeInt(0);
-            dest.writeByteArray(new byte[0]);
-        }
-        else {
-            dest.writeInt(this.leftThumb.length);
-            dest.writeByteArray(leftThumb);
+        dest.writeInt(templates.size());
+        for (Map.Entry<FingerIdentifier, byte[]> e : templates.entrySet()) {
+            dest.writeInt(e.getKey().ordinal());
+            dest.writeInt(e.getValue().length);
+            dest.writeByteArray(e.getValue());
         }
     }
 
@@ -120,40 +66,16 @@ public class Registration implements Parcelable {
         return guid;
     }
 
-    public void setGuid(String guid) {
-        this.guid = guid;
+    public void setTemplate(FingerIdentifier fingerId, byte[] fingerTemplate) {
+        this.templates.put(fingerId, fingerTemplate);
     }
 
-    public byte[] getRightIndex() {
-        return rightIndex;
-    }
-
-    public void setRightIndex(byte[] rightIndex) {
-        this.rightIndex = rightIndex;
-    }
-
-    public byte[] getRightThumb() {
-        return rightThumb;
-    }
-
-    public void setRightThumb(byte[] rightThumb) {
-        this.rightThumb = rightThumb;
-    }
-
-    public byte[] getLeftIndex() {
-        return leftIndex;
-    }
-
-    public void setLeftIndex(byte[] leftIndex) {
-        this.leftIndex = leftIndex;
-    }
-
-    public byte[] getLeftThumb() {
-        return leftThumb;
-    }
-
-    public void setLeftThumb(byte[] leftThumb) {
-        this.leftThumb = leftThumb;
+    public byte[] getTemplate(FingerIdentifier fingerId) {
+        if (templates.containsKey(fingerId)) {
+            return templates.get(fingerId);
+        } else {
+            return new byte[0];
+        }
     }
 
     @Override
@@ -161,23 +83,18 @@ public class Registration implements Parcelable {
         if (o == this) {
             return true;
         }
-        if (o instanceof Registration) {
-            Registration otherRegistration = (Registration)o;
-            return guid.equals(otherRegistration.guid) &&
-                    Arrays.equals(rightIndex, otherRegistration.rightIndex) &&
-                    Arrays.equals(rightThumb, otherRegistration.rightThumb) &&
-                    Arrays.equals(leftIndex, otherRegistration.leftIndex) &&
-                    Arrays.equals(leftThumb, otherRegistration.leftThumb);
+        if (!(o instanceof Registration)) {
+            return false;
         }
-        return false;
+        Registration otherRegistration = (Registration)o;
+        return (guid.equals(otherRegistration.guid) &&
+                templates.equals(otherRegistration.templates));
     }
 
     @Override
     public int hashCode() {
-        return guid.hashCode() ^
-                Arrays.hashCode(rightIndex) ^
-                Arrays.hashCode(rightThumb) ^
-                Arrays.hashCode(leftIndex) ^
-                Arrays.hashCode(leftThumb);
+        int hash = guid.hashCode();
+        hash = hash * 17 + templates.hashCode();
+        return hash;
     }
 }
