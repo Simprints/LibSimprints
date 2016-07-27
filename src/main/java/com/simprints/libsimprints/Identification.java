@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 public class Identification implements Parcelable, Comparable<Identification> {
 
     private String guid;
-    private float confidence;
+    private int confidence;
     private Tier tier;
 
     /**
@@ -22,9 +22,9 @@ public class Identification implements Parcelable, Comparable<Identification> {
      * This constructor creates a new identification
      *
      * @param guid       A string containing the guid
-     * @param confidence A float containing the (matching) confidence
+     * @param confidence An int containing the (matching) confidence
      */
-    public Identification(String guid, float confidence, Tier tier) {
+    public Identification(String guid, int confidence, Tier tier) {
         this.guid = guid;
         this.confidence = confidence;
         this.tier = tier;
@@ -32,7 +32,7 @@ public class Identification implements Parcelable, Comparable<Identification> {
 
     protected Identification(Parcel in) {
         guid = in.readString();
-        confidence = in.readFloat();
+        confidence = in.readInt();
         tier = Tier.values()[in.readInt()];
     }
 
@@ -56,7 +56,7 @@ public class Identification implements Parcelable, Comparable<Identification> {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.guid);
-        dest.writeFloat(this.confidence);
+        dest.writeInt(this.confidence);
         dest.writeInt(this.tier.ordinal());
     }
 
@@ -72,7 +72,7 @@ public class Identification implements Parcelable, Comparable<Identification> {
         return confidence;
     }
 
-    public void setConfidence(float confidence) {
+    public void setConfidence(int confidence) {
         this.confidence = confidence;
     }
 
@@ -101,18 +101,19 @@ public class Identification implements Parcelable, Comparable<Identification> {
             return true;
         }
         if (o instanceof Identification) {
-            Identification otherIdentification = (Identification)o;
-            return (guid.equals(otherIdentification.guid) &&
-                    confidence == otherIdentification.confidence &&
-                    tier.equals(otherIdentification.tier));
+            Identification other = (Identification)o;
+            return (guid.equals(other.guid) &&
+                    confidence == other.confidence &&
+                    tier.equals(other.tier));
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return (guid.hashCode() ^
-                ((Float)confidence).hashCode() ^
-                tier.hashCode());
+        int hash = guid.hashCode();
+        hash = hash * 17 + confidence;
+        hash = hash * 17 + tier.hashCode();
+        return hash;
     }
 }

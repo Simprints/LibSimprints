@@ -16,7 +16,7 @@ import java.util.Collections;
 public class IdentificationTest {
     @Test
     public void testIdentificationParcelling() {
-        Identification exampleId = new Identification("case-id", 0.99f);
+        Identification exampleId = new Identification("case-id", 99, Tier.TIER_1);
 
         Parcel parcel = Parcel.obtain();
         exampleId.writeToParcel(parcel, 0);
@@ -30,10 +30,10 @@ public class IdentificationTest {
     @Test
     public void testSorting() {
         ArrayList<Identification> idList;
-        Identification topId = new Identification("top-id", 0.99f);
-        Identification midId1 = new Identification("first-mid-id", 0.51f);
-        Identification midId2 = new Identification("second-mid-id", 0.51f);
-        Identification lowId = new Identification("low-id", 0.02f);
+        Identification topId = new Identification("top-id", 99, Tier.TIER_1);
+        Identification midId1 = new Identification("first-mid-id", 51, Tier.TIER_3);
+        Identification midId2 = new Identification("second-mid-id", 51, Tier.TIER_3);
+        Identification lowId = new Identification("low-id", 2, Tier.TIER_5);
         Identification[] descendingOrder = new Identification[] { topId, midId1, midId2, lowId};
 
         Identification[] f = new Identification[] { midId1, lowId, topId, midId2 };

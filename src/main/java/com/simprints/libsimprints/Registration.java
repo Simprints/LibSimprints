@@ -2,7 +2,9 @@ package com.simprints.libsimprints;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,7 +68,7 @@ public class Registration implements Parcelable {
         return guid;
     }
 
-    public void setTemplate(FingerIdentifier fingerId, byte[] fingerTemplate) {
+    public void setTemplate(FingerIdentifier fingerId, @NonNull byte[] fingerTemplate) {
         this.templates.put(fingerId, fingerTemplate);
     }
 
@@ -86,15 +88,24 @@ public class Registration implements Parcelable {
         if (!(o instanceof Registration)) {
             return false;
         }
-        Registration otherRegistration = (Registration)o;
-        return (guid.equals(otherRegistration.guid) &&
-                templates.equals(otherRegistration.templates));
+        Registration other = (Registration)o;
+        if (!guid.equals(other.guid)) {
+            return false;
+        }
+        for (FingerIdentifier fingerId : FingerIdentifier.values()) {
+            if (!Arrays.equals(templates.get(fingerId), other.templates.get(fingerId))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
         int hash = guid.hashCode();
-        hash = hash * 17 + templates.hashCode();
+        for (FingerIdentifier fingerId : FingerIdentifier.values()) {
+            hash = hash * 17 + Arrays.hashCode(templates.get(fingerId));
+        }
         return hash;
     }
 }
