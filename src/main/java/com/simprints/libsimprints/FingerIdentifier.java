@@ -1,42 +1,41 @@
 package com.simprints.libsimprints;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@SuppressWarnings("unused")
 public enum FingerIdentifier {
-    RIGHT_5TH_FINGER,
-    RIGHT_4TH_FINGER,
-    RIGHT_3RD_FINGER,
-    RIGHT_INDEX_FINGER,
-    RIGHT_THUMB,
-    LEFT_THUMB,
-    LEFT_INDEX_FINGER,
-    LEFT_3RD_FINGER,
-    LEFT_4TH_FINGER,
-    LEFT_5TH_FINGER;
+    RIGHT_5TH_FINGER("rightFifthFinger"),
+    RIGHT_4TH_FINGER("rightFourthFinger"),
+    RIGHT_3RD_FINGER("rightThirdFinger"),
+    RIGHT_INDEX_FINGER("rightIndexFinger"),
+    RIGHT_THUMB("rightThumb"),
+    LEFT_THUMB("leftThumb"),
+    LEFT_INDEX_FINGER("leftIndexFinger"),
+    LEFT_3RD_FINGER("leftThirdFinger"),
+    LEFT_4TH_FINGER("leftFourthFinger"),
+    LEFT_5TH_FINGER("leftFifthFinger");
+
+    private String string;
+
+    private final static Map<String, FingerIdentifier> stringToId;
+    static {
+        stringToId = new HashMap<>();
+        for (FingerIdentifier fId : values()) {
+            stringToId.put(fId.toString(), fId);
+        }
+    }
+
+    FingerIdentifier(String string) {
+        this.string = string;
+    }
 
     @Override
     public String toString() {
-        switch (this) {
-            case RIGHT_5TH_FINGER:
-                return "rightFifthFinger";
-            case RIGHT_4TH_FINGER:
-                return "rightFourthFinger";
-            case RIGHT_3RD_FINGER:
-                return "rightThirdFinger";
-            case RIGHT_INDEX_FINGER:
-                return "rightIndexFinger";
-            case RIGHT_THUMB:
-                return "rightThumb";
-            case LEFT_THUMB:
-                return "leftThumb";
-            case LEFT_INDEX_FINGER:
-                return "leftIndexFinger";
-            case LEFT_3RD_FINGER:
-                return "leftThirdFinger";
-            case LEFT_4TH_FINGER:
-                return "leftFourthFinger";
-            case LEFT_5TH_FINGER:
-                return "leftFifthFinger";
-            default:
-                throw new IllegalArgumentException();
-        }
+        return string;
+    }
+
+    public static FingerIdentifier parseFingerIdentifier(String s) {
+        return stringToId.get(s);
     }
 }
