@@ -18,7 +18,7 @@ repositories {
     jcenter()
 }
 
-project.version = "1.0.4"
+project.version = "1.0.5"
 
 android {
     compileSdkVersion 24
