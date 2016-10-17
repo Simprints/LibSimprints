@@ -45,7 +45,7 @@ Callback Example
             
             switch (request) {
                 //Enrol callback example
-                case ENROL:
+                case 1:
                     Registration registration = data.getParcelableExtra(Constants.SIMPRINTS_REGISTRATION);
                     if (registration == null) {
                         //No registration object attached
@@ -57,7 +57,7 @@ Callback Example
                     }
                     break;
                 //Identify callback example    
-                case IDENTIFY:
+                case 2:
                     ArrayList<Identification> identifications = data.getParcelableArrayListExtra(Constants.SIMPRINTS_IDENTIFICATIONS);
                     if (identifications == null) {
                         //No identification objects attached
