@@ -4,8 +4,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.2.1'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
+
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
     }
 }
 
@@ -22,7 +25,7 @@ project.version = "1.0.5"
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         minSdkVersion 9
@@ -39,6 +42,30 @@ android {
     }
 }
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'LibSimprints'
+
+    publishedGroupId = 'com.simprints'
+    libraryName = 'LibSimprints'
+    artifact = 'LibSimprints'
+
+    libraryDescription = 'Simprints ID Interface Library'
+
+    siteUrl = 'https://github.com/SimPrints/LibSimprints'
+    gitUrl = 'https://github.com/SimPrints/LibSimprints.git'
+
+    libraryVersion = project.version
+
+    developerId = 'simprints'
+    developerName = 'Simprints'
+    developerEmail = 'support@simprints.com'
+
+    licenseName = 'MIT'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
 dependencies {
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test:runner:0.5'
@@ -47,37 +74,6 @@ dependencies {
     compile 'com.android.support:support-annotations:+'
 }
 
-def libraryGroupId = 'com.simprints'
-def libraryArtifactId = 'libsimprints'
 
-publishing {
-    publications {
-        aar(MavenPublication) {
-            groupId libraryGroupId
-            //noinspection GroovyAssignabilityCheck
-            version project.version
-            artifactId libraryArtifactId
-
-            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
-        }
-    }
-}
-
-artifactory {
-    contextUrl = 'http://178.62.61.39:8081/artifactory'
-    publish {
-        repository {
-            repoKey = 'libs-release-local'
-
-            username = artifactory_username
-            password = artifactory_password
-        }
-        defaults {
-            publications('aar')
-            publishArtifacts = true
-
-            properties = ['qa.level': 'basic', 'q.os': 'android', 'dev.team': 'core']
-            publishPom = true
-        }
-    }
-}
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
