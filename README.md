@@ -1,6 +1,25 @@
 # LibSimprints
+## [Simprints ID](https://play.google.com/store/apps/details?id=com.simprints.id) Interface Library
+####LibSimprints is the library used to pass data too and from the Simprints ID application.
 
-**LibSimprints is the library used to pass data too and from the Simprints ID application.**
+**Instalation from jcenter** 
+
+Gradle
+```
+compile 'com.simprints:LibSimprints:1.0.5'
+```
+
+Maven
+```
+<dependency>
+  <groupId>com.simprints</groupId>
+  <artifactId>LibSimprints</artifactId>
+  <version>1.0.5</version>
+  <type>pom</type>
+</dependency>
+```
+
+**Examples**
 
 Enrolment Callout Example
 ```
@@ -13,8 +32,8 @@ Enrolment Callout Example
             startActivityForResult(intent, 1);
         }
         else {
-            Toast.makeText(this, "Sorry: Simprints ID not installed\nPlease install from Google Play store", Toast.LENGTH_SHORT).show();
-            finish();
+           startActivity(new Intent(Intent.ACTION_VIEW, 
+                    Uri.parse("https://play.google.com/store/apps/details?id=com.simprints.id")));
         }
     }
 ```
@@ -29,8 +48,8 @@ Identification Callout Example
             startActivityForResult(intent, 2);
         }
         else {
-            Toast.makeText(this, "Sorry: Simprints ID not installed\nPlease install from Google Play store", Toast.LENGTH_SHORT).show();
-            finish();
+            startActivity(new Intent(Intent.ACTION_VIEW, 
+                    Uri.parse("https://play.google.com/store/apps/details?id=com.simprints.id")));
         }
     }
 ```
