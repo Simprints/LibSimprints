@@ -1,7 +1,7 @@
 # LibSimprints
 [Simprints ID](https://play.google.com/store/apps/details?id=com.simprints.id) Interface Library
 
-*LibSimprints is the library used to pass data too and from the Simprints ID application.*
+*LibSimprints is the library used to pass data to and from the Simprints ID application.*
 
 **Installation from jcenter** 
 
