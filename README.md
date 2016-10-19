@@ -28,7 +28,6 @@ Enrolment Callout Example
         Intent intent = new Intent();
         intent.setAction(Constants.SIMPRINTS_REGISTER_INTENT);
         intent.putExtra(Constants.SIMPRINTS_API_KEY, "Your Valid API Key Here");
-        intent.setType("text/plain");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 1);
         }
@@ -44,7 +43,6 @@ Identification Callout Example
         Intent intent = new Intent();
         intent.setAction(Constants.SIMPRINTS_IDENTIFY_INTENT);
         intent.putExtra(Constants.SIMPRINTS_API_KEY, "Your Valid API Key Here");
-        intent.setType("text/plain");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 2);
         }
@@ -59,37 +57,38 @@ Callback Example
 ```
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //If the activity result is cancelled ignore it
-        if (resultCode != RESULT_CANCELED) {
-            assert data != null;
-            
-            switch (request) {
-                //Enrol callback example
-                case 1:
-                    Registration registration = data.getParcelableExtra(Constants.SIMPRINTS_REGISTRATION);
-                    if (registration == null) {
-                        //No registration object attached
-                    } else {
-                        //registration.getGuid()));
-                        for (FingerIdentifier fingerId : FingerIdentifier.values()) {
-                            //fingerId.name()
-                        }
+
+        if (resultCode != RESULT_CANCELED || data == null) {
+            return;
+        }
+
+        switch (requestCode) {
+
+            //Enrollment Callback
+            case 1:
+                Registration registration = data.getParcelableExtra(Constants.SIMPRINTS_REGISTRATION);
+                if (registration == null) {
+                    //No registration object attached
+                } else {
+                    for (FingerIdentifier fingerId : FingerIdentifier.values()) {
+                        //fingerId.name()
                     }
-                    break;
-                //Identify callback example    
-                case 2:
-                    ArrayList<Identification> identifications = data.getParcelableArrayListExtra(Constants.SIMPRINTS_IDENTIFICATIONS);
-                    if (identifications == null) {
-                        //No identification objects attached
-                    } else {
-                        for (Identification id : identifications) {
-                            //id.getGuid() 
-                            //id.getConfidence()
-                            //id.getTier().name()
-                        }
+                }
+                break;
+
+            //Identification Callback
+            case 2:
+                ArrayList<Identification> identifications = data.getParcelableArrayListExtra(Constants.SIMPRINTS_IDENTIFICATIONS);
+                if (identifications == null) {
+                    //No identification objects attached
+                } else {
+                    for (Identification id : identifications) {
+                        //id.getGuid()
+                        //id.getConfidence()
+                        //id.getTier().name()
                     }
-                    break;
-            }
+                }
+                break;
         }
     }
 ```
