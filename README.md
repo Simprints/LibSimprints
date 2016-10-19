@@ -3,7 +3,7 @@
 
 *LibSimprints is the library used to pass data too and from the Simprints ID application.*
 
-**Instalation from jcenter** 
+**Installation from jcenter** 
 
 Gradle
 ```
