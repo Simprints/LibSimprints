@@ -58,7 +58,7 @@ Callback Example
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode != RESULT_CANCELED || data == null) {
+        if (resultCode != RESULT_OK || data == null) {
             return;
         }
 
