@@ -70,6 +70,7 @@ Callback Example
                 if (registration == null) {
                     //No registration object attached
                 } else {
+                    //String uniqueId = registration.getGuit();
                     for (FingerIdentifier fingerId : FingerIdentifier.values()) {
                         //fingerId.name()
                     }
