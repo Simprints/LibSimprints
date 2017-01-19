@@ -21,9 +21,14 @@ Maven
 ```
 
 **Required params**
-
-Constants.SIMPRINTS_API_KEY: The API key used to access the project
-Constants.SIMPRINTS_USER_ID: The ID of the user making the request 
+```
+Constants.SIMPRINTS_API_KEY: 
+```
+The API key used to access the project
+```
+Constants.SIMPRINTS_USER_ID: 
+```
+The ID of the user making the request 
 
 **Examples**
 
