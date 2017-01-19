@@ -7,7 +7,7 @@
 
 Gradle
 ```
-compile 'com.simprints:LibSimprints:1.0.5'
+compile 'com.simprints:LibSimprints:1.0.6'
 ```
 
 Maven
@@ -15,10 +15,15 @@ Maven
 <dependency>
   <groupId>com.simprints</groupId>
   <artifactId>LibSimprints</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <type>pom</type>
 </dependency>
 ```
+
+**Required params**
+
+Constants.SIMPRINTS_API_KEY: The API key used to access the project
+Constants.SIMPRINTS_USER_ID: The ID of the user making the request 
 
 **Examples**
 
@@ -28,6 +33,7 @@ Enrolment Callout Example
         Intent intent = new Intent();
         intent.setAction(Constants.SIMPRINTS_REGISTER_INTENT);
         intent.putExtra(Constants.SIMPRINTS_API_KEY, "Your Valid API Key Here");
+        intent.putExtra(Constants.SIMPRINTS_USER_ID, "The current user ID");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 1);
         }
@@ -43,6 +49,7 @@ Identification Callout Example
         Intent intent = new Intent();
         intent.setAction(Constants.SIMPRINTS_IDENTIFY_INTENT);
         intent.putExtra(Constants.SIMPRINTS_API_KEY, "Your Valid API Key Here");
+        intent.putExtra(Constants.SIMPRINTS_USER_ID, "The current user id");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 2);
         }

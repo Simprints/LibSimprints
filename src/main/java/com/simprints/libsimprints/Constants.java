@@ -9,11 +9,11 @@ public class Constants {
     final public static String SIMPRINTS_REGISTER_INTENT = "com.simprints.id.REGISTER";
     final public static String SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
 
-    // Mandatory extra
+    // Mandatory extras
     final public static String SIMPRINTS_API_KEY = "apiKey";
-
-    // Optionnal extras
     final public static String SIMPRINTS_USER_ID = "userId";
+
+    // Optional extras
     final public static String SIMPRINTS_DEVICE_ID = "deviceId";
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
     final public static String SIMPRINTS_GUID = "guid";
@@ -21,7 +21,6 @@ public class Constants {
     // Result codes
     final public static int SIMPRINTS_INVALID_API_KEY = Activity.RESULT_FIRST_USER;
     final public static int SIMPRINTS_INVALID_INTENT_ACTION = Activity.RESULT_FIRST_USER + 1;
-
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
