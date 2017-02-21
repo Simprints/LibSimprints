@@ -101,7 +101,7 @@ public class Identification implements Parcelable, Comparable<Identification> {
             return true;
         }
         if (o instanceof Identification) {
-            Identification other = (Identification)o;
+            Identification other = (Identification) o;
             return (guid.equals(other.guid) &&
                     confidence == other.confidence &&
                     tier.equals(other.tier));
