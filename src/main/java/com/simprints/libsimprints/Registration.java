@@ -88,7 +88,7 @@ public class Registration implements Parcelable {
         if (!(o instanceof Registration)) {
             return false;
         }
-        Registration other = (Registration)o;
+        Registration other = (Registration) o;
         if (!guid.equals(other.guid)) {
             return false;
         }
