@@ -41,7 +41,7 @@ public class SimHelper {
         intent.putExtra(Constants.SIMPRINTS_API_KEY, apiKey);
         intent.putExtra(Constants.SIMPRINTS_USER_ID, userId);
         intent.putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
-        intent.putExtra(Constants.SIMPRINTS_UPDATE_GUID, verifyId);
+        intent.putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId);
         return intent;
     }
 

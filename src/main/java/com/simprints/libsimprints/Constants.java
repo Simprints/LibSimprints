@@ -19,6 +19,9 @@ public class Constants {
     // Mandatory for SIMPRINTS_UPDATE_INTENT
     final public static String SIMPRINTS_UPDATE_GUID = "updateGuid";
 
+    // Mandatory for SIMPRINTS_VERIFY_INTENT
+    final public static String SIMPRINTS_VERIFY_GUID = "verifyGuid";
+
     // Optional extras
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
 
