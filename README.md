@@ -7,7 +7,7 @@
 
 Gradle
 ```
-compile 'com.simprints:LibSimprints:1.0.6'
+compile 'com.simprints:LibSimprints:1.0.7'
 ```
 
 Maven
