@@ -2,7 +2,7 @@ package com.simprints.libsimprints;
 
 import android.app.Activity;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class Constants {
 
     // Intents

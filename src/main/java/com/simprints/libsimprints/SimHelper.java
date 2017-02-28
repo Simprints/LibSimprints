@@ -2,6 +2,7 @@ package com.simprints.libsimprints;
 
 import android.content.Intent;
 
+@SuppressWarnings("unused")
 public class SimHelper {
     private String apiKey;
     private String userId;
