@@ -24,6 +24,7 @@ public class Constants {
 
     // Optional extras
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
+    final public static String SIMPRINTS_METADATA = "metadata";
 
     // Result codes
     final public static int SIMPRINTS_OK = Activity.RESULT_OK;
