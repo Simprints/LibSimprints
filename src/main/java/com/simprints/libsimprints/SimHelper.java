@@ -8,12 +8,12 @@ import android.support.annotation.NonNull;
  * <p>
  * Two call-outs are currently available:
  * <p><ul>
- *     <li> A registration call-out will collect fingerprints and link them to a new GUID.
- *     The call-back data will either contain a {@link Registration} object with the GUID and the fingerprint templates, or a {@link RefusalForm} object with additional refusal data.
- *     <li> An identification call-out will collect fingerprints and search through a group of people.
- *     The call-back data will either contain an array of {@link Identification} objects, or a {@link RefusalForm} object with additional refusal data.
- *     <li> (COMING SOON) A verify call-out will collect fingerprints and verify a specific user. The call-back will return the verification score, or additional data such as errors and refusal data.
- *     <li> (COMING SOON) An update call-out will collect new fingerprints and link them to an existing GUID.
+ * <li> A registration call-out will collect fingerprints and link them to a new GUID.
+ * The call-back data will either contain a {@link Registration} object with the GUID and the fingerprint templates, or a {@link RefusalForm} object with additional refusal data.
+ * <li> An identification call-out will collect fingerprints and search through a group of people.
+ * The call-back data will either contain an array of {@link Identification} objects, or a {@link RefusalForm} object with additional refusal data.
+ * <li> (COMING SOON) A verify call-out will collect fingerprints and verify a specific user. The call-back will return the verification score, or additional data such as errors and refusal data.
+ * <li> (COMING SOON) An update call-out will collect new fingerprints and link them to an existing GUID.
  * </ul><p>
  */
 @SuppressWarnings({"unused", "WeakerAccess"})

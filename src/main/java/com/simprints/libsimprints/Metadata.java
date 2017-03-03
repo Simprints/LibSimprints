@@ -9,9 +9,9 @@ import java.util.Iterator;
 
 /**
  * A set of key/value mappings. Keys are unique, non-null strings. Values may be any mix of non null strings, booleans, longs or finite doubles.
- *
+ * <p>
  * Metadata can be attached to any registration, identification or verification action, for later statistical use.
- *
+ * <p>
  * Example: one could attach the age of the enrollee and the city they were enrolled, in order to find out the average age of beneficiaries for each city.
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
@@ -20,6 +20,7 @@ public class Metadata {
     public class InvalidMetadataException extends Exception {
         /**
          * Constructs a new exception with the specified detail message.
+         *
          * @param message the detail message. The detail message is saved for later retrieval by the getMessage() method.
          */
         InvalidMetadataException(String message) {
@@ -31,11 +32,11 @@ public class Metadata {
 
     /**
      * Constructs a new Metadata object with key/value mappings from a JSON object string.
-     * Only boolean, string, integer and floating point values are allowed (no nested arrays or key/value mappings).
+     * Only boolean, string, long and floating point values are allowed (no nested arrays or key/value mappings).
      *
      * @param jsonString a JSON-encoded string containing an object.
      * @throws InvalidMetadataException if the passed string is not a valid JSON object string,
-     * or it contains nested arrays or key/value mappings.
+     *                                  or it contains nested arrays or key/value mappings.
      */
     public Metadata(@NonNull String jsonString) throws InvalidMetadataException {
         // Parse the JSON-encoded string
@@ -63,7 +64,7 @@ public class Metadata {
     /**
      * Adds a new key/boolean value mapping to this metadata object, replacing any mapping with the same key.
      *
-     * @param key a non-null string.
+     * @param key   a non-null string.
      * @param value a boolean.
      * @return this object.
      */
@@ -75,7 +76,7 @@ public class Metadata {
     /**
      * Adds a new key/double value mapping to this metadata object, replacing any mapping with the same key.
      *
-     * @param key a non-null string.
+     * @param key   a non-null string.
      * @param value a finite double. May not be NaNs or infinities.
      * @return this object.
      */
@@ -87,7 +88,7 @@ public class Metadata {
     /**
      * Adds a new key/long value mapping to this metadata object, replacing any mapping with the same key.
      *
-     * @param key a non-null string.
+     * @param key   a non-null string.
      * @param value a long.
      * @return this object.
      */
@@ -99,7 +100,7 @@ public class Metadata {
     /**
      * Adds a new key/string value mapping to this metadata object, replacing any mapping with the same key.
      *
-     * @param key a non-null string.
+     * @param key   a non-null string.
      * @param value a non-null string.
      * @return this object.
      */
@@ -121,7 +122,7 @@ public class Metadata {
     /**
      * Adds a new key/value mapping to this metadata object, replacing any mapping with the same key.
      *
-     * @param key a non-null string.
+     * @param key   a non-null string.
      * @param value a boolean, long, finite double, or non-null string.
      * @return this object.
      */

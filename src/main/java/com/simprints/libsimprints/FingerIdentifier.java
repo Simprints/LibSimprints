@@ -19,6 +19,7 @@ public enum FingerIdentifier {
     private String string;
 
     private final static Map<String, FingerIdentifier> stringToId;
+
     static {
         stringToId = new HashMap<>();
         for (FingerIdentifier fId : values()) {
