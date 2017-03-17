@@ -37,6 +37,7 @@ public class Constants {
     final public static int SIMPRINTS_INVALID_UPDATE_GUID = Activity.RESULT_FIRST_USER + 7;
     final public static int SIMPRINTS_MISSING_UPDATE_GUID = Activity.RESULT_FIRST_USER + 8;
     final public static int SIMPRINTS_MISSING_VERIFY_GUID = Activity.RESULT_FIRST_USER + 9;
+    final public static int SIMPRINTS_INVALID_METADATA = Activity.RESULT_FIRST_USER + 10;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
