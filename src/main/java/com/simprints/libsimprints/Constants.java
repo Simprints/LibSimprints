@@ -10,6 +10,7 @@ public class Constants {
     final public static String SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
     final public static String SIMPRINTS_UPDATE_INTENT = "com.simprints.id.UPDATE";
     final public static String SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
+    final public static String SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.services.GuidSelectionService";
 
     // Mandatory extras
     final public static String SIMPRINTS_API_KEY = "apiKey";
@@ -21,6 +22,9 @@ public class Constants {
 
     // Mandatory for SIMPRINTS_VERIFY_INTENT
     final public static String SIMPRINTS_VERIFY_GUID = "verifyGuid";
+
+    // Mandatory for SIMPRINTS_SELECT_GUID_INTENT
+    final public static String SIMPRINTS_SELECTED_GUID = "selectedGuid";
 
     // Optional extras
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
