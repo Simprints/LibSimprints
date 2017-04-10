@@ -10,7 +10,7 @@ public class Constants {
     final public static String SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
     final public static String SIMPRINTS_UPDATE_INTENT = "com.simprints.id.UPDATE";
     final public static String SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
-    final public static String SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.services.GuidSelectionService";
+    final public static String SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
 
     // Mandatory extras
     final public static String SIMPRINTS_API_KEY = "apiKey";
