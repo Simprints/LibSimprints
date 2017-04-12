@@ -24,6 +24,7 @@ public class Constants {
     final public static String SIMPRINTS_VERIFY_GUID = "verifyGuid";
 
     // Mandatory for SIMPRINTS_SELECT_GUID_INTENT
+    final public static String SIMPRINTS_PACKAGE_NAME = "com.simprints.id";
     final public static String SIMPRINTS_SELECTED_GUID = "selectedGuid";
     final public static String SIMPRINTS_SESSION_ID = "sessionId";
 

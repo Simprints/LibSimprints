@@ -131,12 +131,12 @@ public class SimHelper {
                                 @NonNull String sessionId,
                                 @Nullable String selectedGuid) {
         Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
+        intent.setPackage(Constants.SIMPRINTS_PACKAGE_NAME);
         intent.putExtra(Constants.SIMPRINTS_API_KEY, apiKey);
         intent.putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
         intent.putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid);
         context.startService(intent);
     }
-
 
     /**
      * Builds a new {@link Intent} to make a verification call-out to Simprints ID.
