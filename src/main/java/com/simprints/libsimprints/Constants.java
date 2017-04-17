@@ -48,5 +48,6 @@ public class Constants {
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
     final public static String SIMPRINTS_IDENTIFICATIONS = "identification";
+    final public static String SIMPRINTS_VERIFICATIONS = "verification";
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
 }
