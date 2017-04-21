@@ -6,7 +6,6 @@ import android.os.Parcelable;
 @SuppressWarnings("unused")
 public class Verification implements Parcelable {
 
-    private boolean guidExists;
     private int confidence;
     private Tier tier;
 
@@ -20,17 +19,15 @@ public class Verification implements Parcelable {
     /**
      * This constructor creates a new identification
      *
-     * @param guidExists A boolean containing whether the guid exists in the database
      * @param confidence An int containing the (matching) confidence
+     * @param tier       The tier score derived from the confidence
      */
-    public Verification(boolean guidExists, int confidence, Tier tier) {
-        this.guidExists = guidExists;
+    public Verification(int confidence, Tier tier) {
         this.confidence = confidence;
         this.tier = tier;
     }
 
     protected Verification(Parcel in) {
-        guidExists = in.readByte() != 0;
         confidence = in.readInt();
         tier = Tier.values()[in.readInt()];
     }
@@ -54,17 +51,8 @@ public class Verification implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByte((byte) (this.guidExists ? 1 : 0));
         dest.writeInt(this.confidence);
         dest.writeInt(this.tier.ordinal());
-    }
-
-    public boolean getGuidExists() {
-        return guidExists;
-    }
-
-    public void setGuidExists(boolean guidExists) {
-        this.guidExists = guidExists;
     }
 
     public float getConfidence() {
