@@ -21,7 +21,7 @@ repositories {
     jcenter()
 }
 
-project.version = "0.0.19"
+project.version = "1.0.11"
 
 android {
     compileSdkVersion 25
@@ -76,3 +76,4 @@ dependencies {
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
