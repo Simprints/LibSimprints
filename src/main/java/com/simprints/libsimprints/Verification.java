@@ -17,7 +17,7 @@ public class Verification implements Parcelable {
     }
 
     /**
-     * This constructor creates a new identification
+     * This constructor creates a new verification
      *
      * @param confidence An int containing the (matching) confidence
      * @param tier       The tier score derived from the confidence
