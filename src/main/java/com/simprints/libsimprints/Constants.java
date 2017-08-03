@@ -32,6 +32,11 @@ public class Constants {
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
     final public static String SIMPRINTS_METADATA = "metadata";
 
+    // Custom callout parameters for particular integrations: Don't include if not needed
+    final public static String SIMPRINTS_RESULT_FORMAT = "resultFormat";
+    final public static String SIMPRINTS_ODK_RESULT_FORMAT_V01 = "ODKv01";
+    final public static String SIMPRINTS_ODK_RESULT_FORMAT_V01_SEPARATOR = " ";
+
     // Result codes
     final public static int SIMPRINTS_OK = Activity.RESULT_OK;
     final public static int SIMPRINTS_CANCELLED = Activity.RESULT_CANCELED;
