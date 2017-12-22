@@ -52,6 +52,7 @@ public class Constants {
     final public static int SIMPRINTS_VERIFY_GUID_NOT_FOUND_ONLINE = Activity.RESULT_FIRST_USER + 11;
     final public static int SIMPRINTS_VERIFY_GUID_NOT_FOUND_OFFLINE = Activity.RESULT_FIRST_USER + 12;
     final public static int SIMPRINTS_INVALID_VERIFY_GUID = Activity.RESULT_FIRST_USER + 13;
+    final public static int SIMPRINTS_INVALID_RESULT_FORMAT = Activity.RESULT_FIRST_USER + 14;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
