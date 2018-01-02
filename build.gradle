@@ -54,6 +54,7 @@ android {
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 ext {
