@@ -14,6 +14,7 @@ public class Constants {
 
     // Mandatory extras
     final public static String SIMPRINTS_API_KEY = "apiKey";
+    final public static String SIMPRINTS_PROJECT_ID = "projectId";
     final public static String SIMPRINTS_USER_ID = "userId";
     final public static String SIMPRINTS_MODULE_ID = "moduleId";
 
@@ -56,6 +57,7 @@ public class Constants {
     final public static int SIMPRINTS_INVALID_MODULE_ID = Activity.RESULT_FIRST_USER + 15;
     final public static int SIMPRINTS_INVALID_USER_ID = Activity.RESULT_FIRST_USER + 16;
     final public static int SIMPRINTS_INVALID_CALLING_PACKAGE = Activity.RESULT_FIRST_USER + 17;
+    final public static int SIMPRINTS_INVALID_PROJECT_ID = Activity.RESULT_FIRST_USER + 18;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
