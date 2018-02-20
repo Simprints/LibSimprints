@@ -41,7 +41,6 @@ public class Constants {
     // Result codes
     final public static int SIMPRINTS_OK = Activity.RESULT_OK;
     final public static int SIMPRINTS_CANCELLED = Activity.RESULT_CANCELED;
-    final public static int SIMPRINTS_MISSING_API_KEY = Activity.RESULT_FIRST_USER;
     final public static int SIMPRINTS_INVALID_API_KEY = Activity.RESULT_FIRST_USER + 1;
     final public static int SIMPRINTS_MISSING_USER_ID = Activity.RESULT_FIRST_USER + 2;
     final public static int SIMPRINTS_MISSING_MODULE_ID = Activity.RESULT_FIRST_USER + 4;
@@ -58,6 +57,7 @@ public class Constants {
     final public static int SIMPRINTS_INVALID_USER_ID = Activity.RESULT_FIRST_USER + 16;
     final public static int SIMPRINTS_INVALID_CALLING_PACKAGE = Activity.RESULT_FIRST_USER + 17;
     final public static int SIMPRINTS_INVALID_PROJECT_ID = Activity.RESULT_FIRST_USER + 18;
+    final public static int SIMPRINTS_MISSING_PROJECT_ID_OR_API_KEY = Activity.RESULT_FIRST_USER + 19;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
