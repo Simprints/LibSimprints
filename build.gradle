@@ -26,7 +26,7 @@ project.version = "2018.1.0"
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 14
@@ -82,10 +82,10 @@ ext {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
-    androidTestCompile 'com.android.support.test:rules:1.0.1'
-    compile 'com.android.support:support-annotations:27.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    implementation 'com.android.support:support-annotations:27.1.0'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
