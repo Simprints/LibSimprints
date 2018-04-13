@@ -5,10 +5,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.4"
 
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
@@ -22,7 +22,7 @@ repositories {
     jcenter()
 }
 
-project.version = "2018.1.0"
+project.version = "2018.2.0"
 
 android {
     compileSdkVersion 27
@@ -59,11 +59,11 @@ repositories {
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'LibSimprints'
+    bintrayName = 'libsimprints'
 
     publishedGroupId = 'com.simprints'
-    libraryName = 'LibSimprints'
-    artifact = 'LibSimprints'
+    libraryName = 'libsimprints'
+    artifact = 'libsimprints'
 
     libraryDescription = 'Simprints ID Interface Library'
 
@@ -85,7 +85,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
-    implementation 'com.android.support:support-annotations:27.1.0'
+    implementation 'com.android.support:support-annotations:27.1.1'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
