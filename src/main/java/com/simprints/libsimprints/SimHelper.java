@@ -27,7 +27,7 @@ public class SimHelper {
     /**
      * Constructs a new helper for making call-outs to Simprints ID with the specified project id and user id.
      *
-     * @param projectId identifies the project that is making the callout. Will be checked if it matches the scanned project id upon signing-in.
+     * @param projectId identifies the project that is making the call-out. Will be checked if it matches the scanned project id upon signing-in.
      * @param userId identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      */
     public SimHelper(@NonNull String projectId, @NonNull String userId) {
