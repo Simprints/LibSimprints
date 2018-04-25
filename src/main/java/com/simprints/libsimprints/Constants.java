@@ -56,6 +56,8 @@ public class Constants {
     final public static int SIMPRINTS_INVALID_CALLING_PACKAGE = Activity.RESULT_FIRST_USER + 17;
     final public static int SIMPRINTS_MISSING_PROJECT_ID = Activity.RESULT_FIRST_USER + 18;
     final public static int SIMPRINTS_INVALID_PROJECT_ID = Activity.RESULT_FIRST_USER + 19;
+    final public static int SIMPRINTS_DIFFERENT_PROJECT_ID = Activity.RESULT_FIRST_USER + 20;
+    final public static int SIMPRINTS_DIFFERENT_USER_ID = Activity.RESULT_FIRST_USER + 21;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
