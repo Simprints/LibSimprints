@@ -15,6 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--keepclassmembers class * implements android.os.Parcelable {
-    static ** CREATOR;
+-keep class com.simprints.libsimprints.* implements android.os.Parcelable {
+    *;
 }

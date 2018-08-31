@@ -1,14 +1,15 @@
 buildscript {
     repositories {
+        google()
         mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.4"
 
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -21,34 +22,48 @@ repositories {
     jcenter()
 }
 
-project.version = "1.0.12"
+project.version = "2018.2.0"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion 19
+        targetSdkVersion 27
         versionCode 1
         versionName project.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        endToEndTesting {
+            initWith debug
+            testCoverageEnabled false
+        }
     }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    google()
 }
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'LibSimprints'
+    bintrayName = 'libsimprints'
 
     publishedGroupId = 'com.simprints'
-    libraryName = 'LibSimprints'
-    artifact = 'LibSimprints'
+    libraryName = 'libsimprints'
+    artifact = 'libsimprints'
 
     libraryDescription = 'Simprints ID Interface Library'
 
@@ -67,12 +82,11 @@ ext {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
-    compile 'com.android.support:support-annotations:25.3.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    implementation 'com.android.support:support-annotations:27.1.1'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
-
