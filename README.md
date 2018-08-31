@@ -7,15 +7,15 @@
 
 Gradle
 ```
-compile 'com.simprints:LibSimprints:1.0.12'
+compile 'com.simprints:libsimprints:2018.2.0'
 ```
 
 Maven
 ```
 <dependency>
   <groupId>com.simprints</groupId>
-  <artifactId>LibSimprints</artifactId>
-  <version>1.0.12</version>
+  <artifactId>libsimprints</artifactId>
+  <version>2018.2.0</version>
   <type>pom</type>
 </dependency>
 ```
