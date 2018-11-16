@@ -2,7 +2,8 @@ package com.simprints.libsimprints;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 @SuppressWarnings("unused")
 public class Identification implements Parcelable, Comparable<Identification> {
