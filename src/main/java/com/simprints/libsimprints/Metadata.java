@@ -1,11 +1,12 @@
 package com.simprints.libsimprints;
 
-import android.support.annotation.NonNull;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+
+import androidx.annotation.NonNull;
 
 /**
  * A set of key/value mappings. Keys are unique, non-null strings. Values may be any mix of non null strings, booleans, longs or finite doubles.

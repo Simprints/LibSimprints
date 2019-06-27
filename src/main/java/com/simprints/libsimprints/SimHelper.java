@@ -2,8 +2,9 @@ package com.simprints.libsimprints;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * A helper class facilitating the construction of an {@link Intent} to call Simprints ID.
@@ -133,8 +134,9 @@ public class SimHelper {
      * @param context context of the host app.
      * @param sessionId identifies the identification session.
      * @param selectedGuid the GUID that was confirmed in the host app.
+     * @return a new confirm indentity {@link Intent}.
      */
-    public void confirmIdentity(@NonNull Context context,
+    public Intent confirmIdentity(@NonNull Context context,
                                 @NonNull String sessionId,
                                 @Nullable String selectedGuid) {
         Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
@@ -142,7 +144,7 @@ public class SimHelper {
         intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
         intent.putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
         intent.putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid);
-        context.startService(intent);
+        return intent;
     }
 
     /**
