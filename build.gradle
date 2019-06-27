@@ -22,7 +22,7 @@ repositories {
     jcenter()
 }
 
-project.version = "2019.1.0"
+project.version = "2019.2.0"
 
 android {
     compileSdkVersion 28
