@@ -65,6 +65,9 @@ public class Constants {
     final public static String SIMPRINTS_VERIFICATION = "verification";
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
 
+    // When SIMPRINTS_SKIP_CHECK is false, the user has completed the Simprints flow
+    final public static String SIMPRINTS_SKIP_CHECK = "skipCheck";
+
     // Deprecated extras
     /** @deprecated use {@link #SIMPRINTS_PROJECT_ID} instead. */
     @Deprecated
