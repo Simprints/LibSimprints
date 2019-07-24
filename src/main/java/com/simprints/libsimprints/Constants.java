@@ -64,6 +64,7 @@ public class Constants {
     final public static String SIMPRINTS_IDENTIFICATIONS = "identification";
     final public static String SIMPRINTS_VERIFICATION = "verification";
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
+    final public static String SIMPRINTS_IDENTIFICATION_OUTCOME = "identificationOutcome";
 
     // When SIMPRINTS_SKIP_CHECK is false, the user has completed the Simprints flow
     final public static String SIMPRINTS_SKIP_CHECK = "skipCheck";
