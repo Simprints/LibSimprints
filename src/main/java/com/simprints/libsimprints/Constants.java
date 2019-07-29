@@ -66,8 +66,8 @@ public class Constants {
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
     final public static String SIMPRINTS_IDENTIFICATION_OUTCOME = "identificationOutcome";
 
-    // When SIMPRINTS_SKIP_CHECK is false, the user has completed the Simprints flow
-    final public static String SIMPRINTS_SKIP_CHECK = "skipCheck";
+    // When SIMPRINTS_BIOMETRICS_COMPLETE_CHECK is true, the user has completed the Simprints flow
+    final public static String SIMPRINTS_BIOMETRICS_COMPLETE_CHECK = "biometricsComplete";
 
     // Deprecated extras
     /** @deprecated use {@link #SIMPRINTS_PROJECT_ID} instead. */
