@@ -65,6 +65,9 @@ public class Constants {
     final public static String SIMPRINTS_VERIFICATION = "verification";
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
 
+    // When SIMPRINTS_BIOMETRICS_COMPLETE_CHECK is true, the user has completed the Simprints flow
+    final public static String SIMPRINTS_BIOMETRICS_COMPLETE_CHECK = "biometricsComplete";
+
     // Deprecated extras
     /** @deprecated use {@link #SIMPRINTS_PROJECT_ID} instead. */
     @Deprecated
