@@ -21,4 +21,4 @@ Maven
 ```
 
 **Documentation**
-https://www.simprints.com/simprints-for-developers
+https://sites.google.com/simprints.com/simprints-for-developers/how-simprints-works
