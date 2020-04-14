@@ -1,7 +1,8 @@
 package com.simprints.libsimprints;
 
 import android.os.Parcel;
-import android.support.test.runner.AndroidJUnit4;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import junit.framework.Assert;
 
@@ -16,7 +17,7 @@ public class RegistrationTest {
         final byte[] leftThumb = {1, 2, 3, 4};
         final byte[] leftIndex = {3, 2, 1};
         final byte[] left3rd = {7, 8, 1, 9};
-        final byte[] left4th = {7, 7, 7 , 7, 7, 8, 1, 9};
+        final byte[] left4th = {7, 7, 7, 7, 7, 8, 1, 9};
         final byte[] left5th = {1, 2};
         final byte[] right5th = {8, 3, 5, 3, 3, 7, 7, 3};
         final byte[] right4th = {7, 1, 3, 7, 0, 5};
