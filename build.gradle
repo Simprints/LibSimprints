@@ -5,11 +5,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5"
-
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -22,18 +21,18 @@ repositories {
     jcenter()
 }
 
-project.version = "2020.2.0"
+project.version = "2020.2.1"
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName project.version
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
@@ -66,33 +65,28 @@ repositories {
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'libsimprints'
-
     publishedGroupId = 'com.simprints'
     libraryName = 'libsimprints'
     artifact = 'libsimprints'
-
     libraryDescription = 'Simprints ID Interface Library'
-
     siteUrl = 'https://github.com/SimPrints/LibSimprints'
     gitUrl = 'https://github.com/SimPrints/LibSimprints.git'
-
     libraryVersion = project.version
-
     developerId = 'simprints'
     developerName = 'Simprints'
     developerEmail = 'support@simprints.com'
-
     licenseName = 'MIT'
     licenseUrl = 'https://opensource.org/licenses/MIT'
     allLicenses = ["MIT"]
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test:rules:1.1.0'
-    implementation 'androidx.annotation:annotation:1.0.1'
+    api 'androidx.annotation:annotation:1.1.0'
+    annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
+
+    androidTestImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
 }
 
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+apply from: 'createpom.gradle'
+apply from: 'bintrayUpload.gradle'
