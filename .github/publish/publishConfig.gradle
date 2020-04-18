@@ -1,0 +1,18 @@
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'libsimprints'
+    publishedGroupId = 'com.simprints'
+    libraryName = 'libsimprints'
+    artifact = 'libsimprints'
+    libraryDescription = 'Simprints ID Interface Library'
+    siteUrl = 'https://github.com/SimPrints/LibSimprints'
+    gitUrl = 'https://github.com/SimPrints/LibSimprints.git'
+    libraryVersion = project.version
+    developerId = 'simprints'
+    developerName = 'Simprints'
+    developerEmail = 'support@simprints.com'
+    licenseName = 'MIT'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
