@@ -62,24 +62,6 @@ repositories {
     google()
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'libsimprints'
-    publishedGroupId = 'com.simprints'
-    libraryName = 'libsimprints'
-    artifact = 'libsimprints'
-    libraryDescription = 'Simprints ID Interface Library'
-    siteUrl = 'https://github.com/SimPrints/LibSimprints'
-    gitUrl = 'https://github.com/SimPrints/LibSimprints.git'
-    libraryVersion = project.version
-    developerId = 'simprints'
-    developerName = 'Simprints'
-    developerEmail = 'support@simprints.com'
-    licenseName = 'MIT'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
-    allLicenses = ["MIT"]
-}
-
 dependencies {
     api 'androidx.annotation:annotation:1.1.0'
     annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
@@ -88,5 +70,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
 }
 
-apply from: 'createpom.gradle'
-apply from: 'bintrayUpload.gradle'
+apply from: '.github/publish/publishConfig.gradle'
+apply from: '.github/publish/createpom.gradle'
+apply from: '.github/publish/bintrayUpload.gradle'
