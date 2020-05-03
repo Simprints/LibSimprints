@@ -1,4 +1,6 @@
 # LibSimprints
+![Android CI](https://github.com/Simprints/LibSimprints/workflows/Android%20CI/badge.svg?branch=master)
+
 [Simprints ID](https://play.google.com/store/apps/details?id=com.simprints.id) Interface Library
 
 *LibSimprints is the library used to pass data to and from the Simprints ID application.*
@@ -7,7 +9,7 @@
 
 Gradle
 ```
-implementation 'com.simprints:libsimprints:2019.3.1'
+implementation 'com.simprints:libsimprints:2020.2.1'
 ```
 
 Maven
@@ -15,7 +17,7 @@ Maven
 <dependency>
   <groupId>com.simprints</groupId>
   <artifactId>libsimprints</artifactId>
-  <version>2019.3.1</version>
+  <version>2020.2.1</version>
   <type>pom</type>
 </dependency>
 ```
