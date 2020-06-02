@@ -154,13 +154,12 @@ public class SimHelper {
      * valid results without capturing the templates again.
      *
      * @param moduleId identifies which module to register into.
-     * @param metadata optional metadata to attach to the registration.
+     * @param metadata metadata to attach to the registration.
      * @param sessionId identifies the identification session.
      * @return a new registration for last biometrics {@link Intent}.
      */
     public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull Metadata metadata, @NonNull String sessionId) {
-        return register(moduleId)
-            .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+        return register(moduleId, metadata)
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
     }
 
