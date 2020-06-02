@@ -148,6 +148,23 @@ public class SimHelper {
     }
 
     /**
+     * Builds a new {@link Intent} to register the templates captured during
+     * the last Simprints ID session, if that was an identification.
+     * Used to register a new record after an identification that hasn't produced
+     * valid results without capturing the templates again.
+     *
+     * @param moduleId identifies which module to register into.
+     * @param metadata optional metadata to attach to the registration.
+     * @param sessionId identifies the identification session.
+     * @return a new registration for last biometrics {@link Intent}.
+     */
+    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull Metadata metadata, @NonNull String sessionId) {
+        return register(moduleId)
+            .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
+    }
+
+    /**
      * Builds a new {@link Intent} to make a verification call-out to Simprints ID.
      * This intent will start an activity that returns a {@link Verification} object.
      *

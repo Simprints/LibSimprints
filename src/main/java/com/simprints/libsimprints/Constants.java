@@ -11,6 +11,7 @@ public class Constants {
     final public static String SIMPRINTS_UPDATE_INTENT = "com.simprints.id.UPDATE";
     final public static String SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
     final public static String SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
+    final public static String SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT = "com.simprints.id.REGISTER_LAST_BIOMETRICS";
 
     // Mandatory extras
     final public static String SIMPRINTS_PROJECT_ID = "projectId";
