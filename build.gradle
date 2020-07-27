@@ -5,9 +5,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.2'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.0"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.10.0"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -21,7 +21,7 @@ repositories {
     jcenter()
 }
 
-project.version = "2020.2.1"
+project.version = "2020.3.0"
 
 android {
     compileSdkVersion 29
@@ -43,7 +43,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        releaseWithLogfile {
+        staging {
             initWith release
         }
         endToEndTesting {
