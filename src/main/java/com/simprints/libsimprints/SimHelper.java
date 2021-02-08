@@ -159,8 +159,12 @@ public class SimHelper {
      * @return a new registration for last biometrics {@link Intent}.
      */
     public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull Metadata metadata, @NonNull String sessionId) {
-        return register(moduleId, metadata)
-            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
+        return new Intent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
+                .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+                .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+                .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+                .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
     }
 
     /**
