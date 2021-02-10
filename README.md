@@ -9,7 +9,7 @@
 
 Gradle
 ```
-implementation 'com.simprints:libsimprints:2020.3.0'
+implementation 'com.simprints:libsimprints:2021.1.0'
 ```
 
 Maven

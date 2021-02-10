@@ -21,7 +21,7 @@ repositories {
     jcenter()
 }
 
-project.version = "2020.3.0"
+project.version = "2021.1.0"
 
 android {
     compileSdkVersion 29
