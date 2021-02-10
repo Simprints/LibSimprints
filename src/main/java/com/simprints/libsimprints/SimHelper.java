@@ -29,7 +29,7 @@ public class SimHelper {
      * Constructs a new helper for making call-outs to Simprints ID with the specified project id and user id.
      *
      * @param projectId identifies the project that is making the call-out. Will be checked if it matches the scanned project id upon signing-in.
-     * @param userId identifies which user is making a request to Simprints ID. Can be any arbitrary String.
+     * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      */
     public SimHelper(@NonNull String projectId, @NonNull String userId) {
         this.projectId = projectId;
@@ -131,14 +131,14 @@ public class SimHelper {
     /**
      * Sends which GUID was confirmed in a session back to SimprintsId.
      *
-     * @param context context of the host app.
-     * @param sessionId identifies the identification session.
+     * @param context      context of the host app.
+     * @param sessionId    identifies the identification session.
      * @param selectedGuid the GUID that was confirmed in the host app.
      * @return a new confirm indentity {@link Intent}.
      */
     public Intent confirmIdentity(@NonNull Context context,
-                                @NonNull String sessionId,
-                                @Nullable String selectedGuid) {
+                                  @NonNull String sessionId,
+                                  @Nullable String selectedGuid) {
         Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
         intent.setPackage(Constants.SIMPRINTS_PACKAGE_NAME);
         intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
@@ -153,14 +153,32 @@ public class SimHelper {
      * Used to register a new record after an identification that hasn't produced
      * valid results without capturing the templates again.
      *
-     * @param moduleId identifies which module to register into.
-     * @param metadata metadata to attach to the registration.
+     * @param moduleId  identifies which module to register into.
      * @param sessionId identifies the identification session.
      * @return a new registration for last biometrics {@link Intent}.
      */
-    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull Metadata metadata, @NonNull String sessionId) {
-        return register(moduleId, metadata)
-            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
+    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull String sessionId) {
+        return new Intent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
+                .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+                .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+                .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+                .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
+    }
+
+    /**
+     * Builds a new {@link Intent} to register the templates captured during
+     * the last Simprints ID session, if that was an identification.
+     * Used to register a new record after an identification that hasn't produced
+     * valid results without capturing the templates again.
+     *
+     * @param moduleId  identifies which module to register into.
+     * @param metadata  metadata to attach to the registration.
+     * @param sessionId identifies the identification session.
+     * @return a new registration for last biometrics {@link Intent}.
+     */
+    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull String sessionId, @NonNull Metadata metadata) {
+        return registerLastBiometrics(moduleId, sessionId)
+                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
     }
 
     /**
