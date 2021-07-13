@@ -35,7 +35,7 @@ if (secretPropsFile.exists()) {
     ext["signing.keyId"] = System.getenv('MAVEN_PGP_KEY_ID')
     ext["signing.password"] = System.getenv('MAVEN_PGP_KEY_PASSWORD')
     ext["signing.key"] = System.getenv('MAVEN_PGP_KEY')
-    ext["ossrhUsername"] = System.getenv('MAVEN_OSS_PASSWORD')
-    ext["ossrhPassword"] = System.getenv('MAVEN_PGP_KEY_PASSWORD')
+    ext["ossrhUsername"] = System.getenv('MAVEN_OSS_USERNAME')
+    ext["ossrhPassword"] = System.getenv('MAVEN_OSS_PASSWORD')
     ext["ossStagingProfileId"] = System.getenv('MAVEN_STAGING_PROFILE_ID')
 }
