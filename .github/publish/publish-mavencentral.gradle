@@ -1,6 +1,18 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
+// Set up Sonatype repository
+nexusPublishing {
+    repositories {
+        sonatype {
+            packageGroup = publishedGroupId
+            stagingProfileId = ossStagingProfileId
+            username = ossrhUsername
+            password = ossrhPassword
+        }
+    }
+}
+
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
     if (project.plugins.findPlugin("com.android.library")) {
@@ -60,22 +72,6 @@ afterEvaluate {
     }
 }
 
-// Set up Sonatype repository
-nexusPublishing {
-    repositories {
-        sonatype {
-            //stagingProfileId = sonatypeStagingProfileId
-            username = System.getenv('MAVEN_OSS_USERNAME')
-            password = System.getenv('MAVEN_OSS_PASSWORD')
-        }
-    }
-}
-
 signing {
-    useInMemoryPgpKeys(
-            System.getenv('MAVEN_PGP_KEY_ID'),
-            System.getenv('MAVEN_PGP_KEY'),
-            System.getenv('MAVEN_PGP_KEY_PASSWORD'),
-    )
     sign publishing.publications
 }

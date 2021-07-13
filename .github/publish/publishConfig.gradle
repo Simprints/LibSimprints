@@ -1,7 +1,5 @@
-
+// Library values
 ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'libsimprints'
     publishedGroupId = 'com.simprints'
     libraryName = 'libsimprints'
     artifact = 'libsimprints'
@@ -15,4 +13,29 @@ ext {
     licenseName = 'MIT'
     licenseUrl = 'https://opensource.org/licenses/MIT'
     allLicenses = ["MIT"]
+}
+
+// Publishing values
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.key"] = ''
+ext["ossrhUsername"] = ''
+ext["ossrhPassword"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    println "Found secret props file, loading props"
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    println "No props file, loading env vars"
+    ext["signing.keyId"] = System.getenv('MAVEN_PGP_KEY_ID')
+    ext["signing.password"] = System.getenv('MAVEN_PGP_KEY_PASSWORD')
+    ext["signing.key"] = System.getenv('MAVEN_PGP_KEY')
+    ext["ossrhUsername"] = System.getenv('MAVEN_OSS_PASSWORD')
+    ext["ossrhPassword"] = System.getenv('MAVEN_PGP_KEY_PASSWORD')
+    ext["ossStagingProfileId"] = System.getenv('MAVEN_STAGING_PROFILE_ID')
 }
