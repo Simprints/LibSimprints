@@ -70,6 +70,10 @@ public class Constants {
     // When SIMPRINTS_BIOMETRICS_COMPLETE_CHECK is true, the user has completed the Simprints flow
     final public static String SIMPRINTS_BIOMETRICS_COMPLETE_CHECK = "biometricsComplete";
 
+    // These two values represent data that could be null. They only apply to projects using cosync
+    final public static String SIMPRINTS_COSYNC_EVENT = "events";
+    final public static String SIMPRINTS_COSYNC_SUBJECT_ACTIONS = "subjectActions";
+
     // Deprecated extras
     /** @deprecated use {@link #SIMPRINTS_PROJECT_ID} instead. */
     @Deprecated
