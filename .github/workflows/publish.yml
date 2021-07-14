@@ -2,7 +2,7 @@ name: Publish Package
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   build:
@@ -17,15 +17,25 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Build with Gradle
+      - name: Build
         run: ./gradlew build
 
       - name: Build Artifacts
-        run: ./gradlew install
+        run: ./gradlew assembleRelease androidSourcesJar
 
-      - name: Publish to Bintray
+      - name: Create secrets file
         env:
-          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
-          BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}
-        run: ./gradlew bintrayUpload
+          MAVEN_PGP_KEY_BASE64_CONTENT: ${{ secrets.MAVEN_PGP_KEY_BASE64_CONTENT }}
+          MAVEN_PGP_KEY: ${{ secrets.MAVEN_PGP_KEY }}
+        run: sudo bash -c "echo '$MAVEN_PGP_KEY_BASE64_CONTENT' | base64 -d > '$MAVEN_PGP_KEY'"
+
+      - name: Publish to Maven Central
+        env:
+          MAVEN_OSS_PASSWORD: ${{ secrets.MAVEN_OSS_PASSWORD }}
+          MAVEN_OSS_USERNAME: ${{ secrets.MAVEN_OSS_USERNAME }}
+          MAVEN_PGP_KEY: ${{ secrets.MAVEN_PGP_KEY }}
+          MAVEN_PGP_KEY_ID: ${{ secrets.MAVEN_PGP_KEY_ID }}
+          MAVEN_PGP_KEY_PASSWORD: ${{ secrets.MAVEN_PGP_KEY_PASSWORD }}
+          MAVEN_STAGING_PROFILE_ID: ${{ secrets.MAVEN_STAGING_PROFILE_ID }}
+        run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
         

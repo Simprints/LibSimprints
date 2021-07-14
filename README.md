@@ -5,7 +5,7 @@
 
 *LibSimprints is the library used to pass data to and from the Simprints ID application.*
 
-**Installation from jcenter** 
+**Installation from maven** 
 
 Gradle
 ```
