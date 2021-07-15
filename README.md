@@ -1,5 +1,5 @@
 # LibSimprints
-![Android CI](https://github.com/Simprints/LibSimprints/workflows/Android%20CI/badge.svg?branch=master)
+![Android CI](https://github.com/Simprints/LibSimprints/workflows/Android%20CI/badge.svg?branch=main)
 
 [Simprints ID](https://play.google.com/store/apps/details?id=com.simprints.id) Interface Library
 
