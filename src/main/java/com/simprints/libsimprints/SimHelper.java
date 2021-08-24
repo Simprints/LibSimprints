@@ -140,7 +140,6 @@ public class SimHelper {
                                   @NonNull String sessionId,
                                   @Nullable String selectedGuid) {
         Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
-        intent.setPackage(Constants.SIMPRINTS_PACKAGE_NAME);
         intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
         intent.putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
         intent.putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid);
