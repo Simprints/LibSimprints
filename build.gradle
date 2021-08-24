@@ -16,15 +16,15 @@ repositories {
     mavenCentral()
 }
 
-project.version = "2021.2.0"
+project.version = "2021.3.0"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName project.version
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
