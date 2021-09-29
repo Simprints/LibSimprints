@@ -30,3 +30,6 @@ If you are not sure if the vulnerability is genuine and exploitable, or you have
 - configuration weaknesses - for imporperly exposed data or endpoints
 
 Then you can still [reach out via email](mailto:security@simprints.com).
+
+## Bug bounty
+Unfortunately, Simprints doesn't offer a paid bug bounty programme. Simprints will make efforts to show appreciation to people who take the time and effort to disclose vulnerabilities responsibly.
