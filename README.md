@@ -9,7 +9,7 @@
 
 Gradle
 ```
-implementation 'com.simprints:libsimprints:2021.3.0'
+implementation 'com.simprints:libsimprints:2022.1.0'
 ```
 
 Maven
@@ -17,7 +17,7 @@ Maven
 <dependency>
   <groupId>com.simprints</groupId>
   <artifactId>libsimprints</artifactId>
-  <version>2021.3.0</version>
+  <version>2022.1.0</version>
   <type>pom</type>
 </dependency>
 ```
