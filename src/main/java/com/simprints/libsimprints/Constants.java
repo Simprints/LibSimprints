@@ -59,6 +59,20 @@ public class Constants {
     final public static int SIMPRINTS_DIFFERENT_PROJECT_ID = Activity.RESULT_FIRST_USER + 20;
     final public static int SIMPRINTS_DIFFERENT_USER_ID = Activity.RESULT_FIRST_USER + 21;
     final public static int SIMPRINTS_ROOTED_DEVICE = Activity.RESULT_FIRST_USER + 22;
+    final public static int SIMPRINTS_UNEXPECTED_ERROR = Activity.RESULT_FIRST_USER + 23;
+    final public static int SIMPRINTS_BLUETOOTH_NOT_SUPPORTED = Activity.RESULT_FIRST_USER + 24;
+    final public static int SIMPRINTS_INVALID_SELECTED_ID = Activity.RESULT_FIRST_USER + 25;
+    final public static int SIMPRINTS_INVALID_SESSION_ID = Activity.RESULT_FIRST_USER + 26;
+    final public static int SIMPRINTS_LOGIN_NOT_COMPLETE = Activity.RESULT_FIRST_USER + 27;
+    final public static int SIMPRINTS_INVALID_STATE_FOR_INTENT_ACTION = Activity.RESULT_FIRST_USER + 28;
+    final public static int SIMPRINTS_ENROLMENT_LAST_BIOMETRICS_FAILED= Activity.RESULT_FIRST_USER + 29;
+    final public static int SIMPRINTS_FACE_LICENSE_MISSING = Activity.RESULT_FIRST_USER + 30;
+    final public static int SIMPRINTS_FACE_LICENSE_INVALID = Activity.RESULT_FIRST_USER + 31;
+    final public static int SIMPRINTS_SETUP_OFFLINE_DURING_MODALITY_DOWNLOAD = Activity.RESULT_FIRST_USER + 32;
+    final public static int SIMPRINTS_SETUP_MODALITY_DOWNLOAD_CANCELLED = Activity.RESULT_FIRST_USER + 33;
+    final public static int SIMPRINTS_FINGERPRINT_CONFIGURATION_ERROR = Activity.RESULT_FIRST_USER + 34;
+    final public static int SIMPRINTS_FACE_CONFIGURATION_ERROR = Activity.RESULT_FIRST_USER + 35;
+    final public static int SIMPRINTS_BACKEND_MAINTENANCE_ERROR = Activity.RESULT_FIRST_USER + 36;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
