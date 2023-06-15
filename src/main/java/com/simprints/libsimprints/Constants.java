@@ -73,6 +73,7 @@ public class Constants {
     final public static int SIMPRINTS_FINGERPRINT_CONFIGURATION_ERROR = Activity.RESULT_FIRST_USER + 34;
     final public static int SIMPRINTS_FACE_CONFIGURATION_ERROR = Activity.RESULT_FIRST_USER + 35;
     final public static int SIMPRINTS_BACKEND_MAINTENANCE_ERROR = Activity.RESULT_FIRST_USER + 36;
+    final public static int SIMPRINTS_PROJECT_PAUSED = Activity.RESULT_FIRST_USER + 37;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
