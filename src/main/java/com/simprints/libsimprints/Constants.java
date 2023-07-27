@@ -75,6 +75,7 @@ public class Constants {
     final public static int SIMPRINTS_BACKEND_MAINTENANCE_ERROR = Activity.RESULT_FIRST_USER + 36;
     final public static int SIMPRINTS_PROJECT_PAUSED = Activity.RESULT_FIRST_USER + 37;
     final public static int SIMPRINTS_PROJECT_ENDING = Activity.RESULT_FIRST_USER + 38;
+    final public static int SIMPRINTS_BLUETOOTH_NO_PERMISSION = Activity.RESULT_FIRST_USER + 39;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
