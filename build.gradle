@@ -16,7 +16,7 @@ repositories {
     mavenCentral()
 }
 
-project.version = "2023.2.2"
+project.version = "2023.4.1"
 
 android {
     compileSdkVersion 33
