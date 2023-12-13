@@ -131,14 +131,11 @@ public class SimHelper {
     /**
      * Sends which GUID was confirmed in a session back to SimprintsId.
      *
-     * @param context      context of the host app.
      * @param sessionId    identifies the identification session.
      * @param selectedGuid the GUID that was confirmed in the host app.
      * @return a new confirm indentity {@link Intent}.
      */
-    public Intent confirmIdentity(@NonNull Context context,
-                                  @NonNull String sessionId,
-                                  @Nullable String selectedGuid) {
+    public Intent confirmIdentity(@NonNull String sessionId, @Nullable String selectedGuid) {
         Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
         intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
         intent.putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
