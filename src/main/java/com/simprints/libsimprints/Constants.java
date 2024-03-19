@@ -30,6 +30,7 @@ public class Constants {
 
     // Optional extras
     final public static String SIMPRINTS_CALLING_PACKAGE = "packageName";
+    final public static String SIMPRINTS_BIOMETRIC_DATA_SOURCE = "biometricDataSource";
     final public static String SIMPRINTS_METADATA = "metadata";
 
     // Custom callout parameters for particular integrations: Don't include if not needed
