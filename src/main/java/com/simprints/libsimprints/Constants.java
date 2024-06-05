@@ -33,6 +33,9 @@ public class Constants {
     final public static String SIMPRINTS_BIOMETRIC_DATA_SOURCE = "biometricDataSource";
     final public static String SIMPRINTS_METADATA = "metadata";
 
+    // Optional keys in SIMPRINTS_METADATA
+    final public static String SIMPRINTS_SUBJECT_AGE = "subjectAge";
+
     // Custom callout parameters for particular integrations: Don't include if not needed
     final public static String SIMPRINTS_RESULT_FORMAT = "resultFormat";
     final public static String SIMPRINTS_ODK_RESULT_FORMAT_V01 = "ODKv01";
@@ -77,6 +80,7 @@ public class Constants {
     final public static int SIMPRINTS_PROJECT_PAUSED = Activity.RESULT_FIRST_USER + 37;
     final public static int SIMPRINTS_PROJECT_ENDING = Activity.RESULT_FIRST_USER + 38;
     final public static int SIMPRINTS_BLUETOOTH_NO_PERMISSION = Activity.RESULT_FIRST_USER + 39;
+    final public static int SIMPRINTS_AGE_GROUP_NOT_SUPPORTED = Activity.RESULT_FIRST_USER + 40;
 
     // Result extras
     final public static String SIMPRINTS_REGISTRATION = "registration";
