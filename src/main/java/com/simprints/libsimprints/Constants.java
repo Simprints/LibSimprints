@@ -86,6 +86,7 @@ public class Constants {
     final public static String SIMPRINTS_REGISTRATION = "registration";
     final public static String SIMPRINTS_IDENTIFICATIONS = "identification";
     final public static String SIMPRINTS_VERIFICATION = "verification";
+    final public static String SIMPRINTS_VERIFICATION_SUCCESS = "verificationSuccess";
     final public static String SIMPRINTS_REFUSAL_FORM = "refusalForm";
 
     // When SIMPRINTS_BIOMETRICS_COMPLETE_CHECK is true, the user has completed the Simprints flow
