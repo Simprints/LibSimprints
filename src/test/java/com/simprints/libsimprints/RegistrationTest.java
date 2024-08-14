@@ -26,8 +26,7 @@ public class RegistrationTest {
         final byte[] rightIndex = {0};
 
 
-        Registration exampleRegistration =
-                new Registration("case-id");
+        Registration exampleRegistration = new Registration("case-id");
         exampleRegistration.setTemplate(FingerIdentifier.LEFT_THUMB, leftThumb);
         exampleRegistration.setTemplate(FingerIdentifier.LEFT_INDEX_FINGER, leftIndex);
         exampleRegistration.setTemplate(FingerIdentifier.LEFT_3RD_FINGER, left3rd);
