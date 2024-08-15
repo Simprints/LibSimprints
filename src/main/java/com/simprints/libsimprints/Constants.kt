@@ -8,7 +8,6 @@ object Constants {
     // Intents
     const val SIMPRINTS_REGISTER_INTENT = "com.simprints.id.REGISTER";
     const val SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
-    const val SIMPRINTS_UPDATE_INTENT = "com.simprints.id.UPDATE";
     const val SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
     const val SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
     const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT =
@@ -18,9 +17,6 @@ object Constants {
     const val SIMPRINTS_PROJECT_ID = "projectId";
     const val SIMPRINTS_USER_ID = "userId";
     const val SIMPRINTS_MODULE_ID = "moduleId";
-
-    // Mandatory for SIMPRINTS_UPDATE_INTENT
-    const val SIMPRINTS_UPDATE_GUID = "updateGuid";
 
     // Mandatory for SIMPRINTS_VERIFY_INTENT
     const val SIMPRINTS_VERIFY_GUID = "verifyGuid";

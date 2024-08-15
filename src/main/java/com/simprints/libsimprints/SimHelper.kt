@@ -47,30 +47,6 @@ data class SimHelper(
     fun register(moduleId: String, metadata: Metadata) = register(moduleId)
         .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 
-    /**
-     * (COMING SOON) Builds a new {@link Intent} to make an update call-out to Simprints ID.
-     *
-     * @param moduleId identifies which module to update.
-     * @param updateId identifies which beneficiary to update.
-     * @return a new update {@link Intent}.
-     */
-    fun update(moduleId: String, updateId: String) = Intent(Constants.SIMPRINTS_UPDATE_INTENT)
-        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-        .putExtra(Constants.SIMPRINTS_UPDATE_GUID, updateId)
-
-    /**
-     * (COMING SOON) Builds a new {@link Intent} to make an update call-out to Simprints ID
-     * with additional arbitrary {@link Metadata}.
-     *
-     * @param moduleId identifies which module to update.
-     * @param updateId identifies which beneficiary to update.
-     * @param metadata optional metadata to attach to the update.
-     * @return a new update {@link Intent}.
-     */
-    fun update(moduleId: String, updateId: String, metadata: Metadata) = update(moduleId, updateId)
-        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
 
     /**
      * Builds a new {@link Intent} to make an identification call-out to Simprints ID.
