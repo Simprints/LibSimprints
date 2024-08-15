@@ -28,6 +28,8 @@ data class Metadata(
      *                                  or it contains nested arrays or key/value mappings.
      */
     constructor(jsonString: String) : this() {
+        if (jsonString.isBlank()) return
+
         // Parse the JSON-encoded string
         try {
             json = JSONObject(jsonString)
