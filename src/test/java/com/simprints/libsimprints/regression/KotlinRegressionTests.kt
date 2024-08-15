@@ -133,6 +133,7 @@ class KotlinRegressionTests {
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
+                Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_SESSION_ID,
                 Constants.SIMPRINTS_SELECTED_GUID
             ),

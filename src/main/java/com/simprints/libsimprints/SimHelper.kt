@@ -28,49 +28,51 @@ data class SimHelper(
      * This intent will start an activity that returns a {@link Registration} object.
      *
      * @param moduleId identifies which module to register into.
+     * @param metadata optional metadata to attach to the registration if provided.
      * @return a new registration {@link Intent}.
      */
-    fun register(moduleId: String) = Intent(Constants.SIMPRINTS_REGISTER_INTENT)
-        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+    @JvmOverloads
+    fun register(
+        moduleId: String,
+        metadata: Metadata? = null,
+    ) = createBaseIntent(Constants.SIMPRINTS_REGISTER_INTENT)
         .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-
-    /**
-     * Builds a new {@link Intent} to make a registration call-out to Simprints ID
-     * with additional arbitrary {@link Metadata}.
-     * This intent will start an activity that returns a {@link Registration} object.
-     *
-     * @param moduleId identifies which module to register into.
-     * @param metadata optional metadata to attach to the registration.
-     * @return a new registration {@link Intent}.
-     */
-    fun register(moduleId: String, metadata: Metadata) = register(moduleId)
-        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
-
+        .appendOptionalMetadata(metadata)
 
     /**
      * Builds a new {@link Intent} to make an identification call-out to Simprints ID.
      * This intent will start an activity that returns an ArrayList of {@link Identification} objects.
      *
      * @param moduleId identifies which module to search in.
+     * @param metadata optional metadata to attach to the identification if provided.
      * @return a new identification {@link Intent}.
      */
-    fun identify(moduleId: String) = Intent(Constants.SIMPRINTS_IDENTIFY_INTENT)
-        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
+    @JvmOverloads
+    fun identify(
+        moduleId: String,
+        metadata: Metadata? = null,
+    ) = createBaseIntent(Constants.SIMPRINTS_IDENTIFY_INTENT)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+        .appendOptionalMetadata(metadata)
 
     /**
-     * Builds a new {@link Intent} to make an identification call-out to Simprints ID with
-     * additional arbitrary {@link Metadata}.
-     * This intent will start an activity that returns an ArrayList of {@link Identification} objects.
+     * Builds a new {@link Intent} to make a verification call-out to Simprints ID.
+     * This intent will start an activity that returns a {@link Verification} object.
      *
-     * @param moduleId identifies which module to search in.
-     * @param metadata optional metadata to attach to the identification.
-     * @return a new identification {@link Intent}.
+     * @param moduleId identifies which module contains the registered beneficiary to verify.
+     * @param verifyId identifies which registered beneficiary to verify.
+     * @param metadata optional metadata to attach to the verification if provided.
+     * @return a new verification {@link Intent}.
      */
-    fun identify(moduleId: String, metadata: Metadata) = identify(moduleId)
-        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    @JvmOverloads
+    fun verify(
+        moduleId: String,
+        verifyId: String,
+        metadata: Metadata? = null,
+    ) = createBaseIntent(Constants.SIMPRINTS_VERIFY_INTENT)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+        .putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId)
+        .appendOptionalMetadata(metadata)
 
     /**
      * Sends which GUID was confirmed in a session back to SimprintsId.
@@ -79,11 +81,12 @@ data class SimHelper(
      * @param selectedGuid the GUID that was confirmed in the host app.
      * @return a new confirm indentity {@link Intent}.
      */
-    fun confirmIdentity(sessionId: String, selectedGuid: String) =
-        Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT)
-            .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
-            .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
+    fun confirmIdentity(
+        sessionId: String,
+        selectedGuid: String,
+    ) = createBaseIntent(Constants.SIMPRINTS_SELECT_GUID_INTENT)
+        .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
+        .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
 
     /**
      * Builds a new {@link Intent} to register the templates captured during
@@ -93,54 +96,24 @@ data class SimHelper(
      *
      * @param moduleId  identifies which module to register into.
      * @param sessionId identifies the identification session.
+     * @param metadata  metadata to attach to the registration if provided.
      * @return a new registration for last biometrics {@link Intent}.
      */
-    fun registerLastBiometrics(moduleId: String, sessionId: String) =
-        Intent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
-            .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-            .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-            .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
+    @JvmOverloads
+    fun registerLastBiometrics(
+        moduleId: String,
+        sessionId: String,
+        metadata: Metadata? = null,
+    ) = createBaseIntent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+        .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
+        .appendOptionalMetadata(metadata)
 
-    /**
-     * Builds a new {@link Intent} to register the templates captured during
-     * the last Simprints ID session, if that was an identification.
-     * Used to register a new record after an identification that hasn't produced
-     * valid results without capturing the templates again.
-     *
-     * @param moduleId  identifies which module to register into.
-     * @param sessionId identifies the identification session.
-     * @param metadata  metadata to attach to the registration.
-     * @return a new registration for last biometrics {@link Intent}.
-     */
-    fun registerLastBiometrics(moduleId: String, sessionId: String, metadata: Metadata) =
-        registerLastBiometrics(moduleId, sessionId)
-            .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
-
-    /**
-     * Builds a new {@link Intent} to make a verification call-out to Simprints ID.
-     * This intent will start an activity that returns a {@link Verification} object.
-     *
-     * @param moduleId identifies which module contains the registered beneficiary to verify.
-     * @param verifyId identifies which registered beneficiary to verify.
-     * @return a new verification {@link Intent}.
-     */
-    fun verify(moduleId: String, verifyId: String) = Intent(Constants.SIMPRINTS_VERIFY_INTENT)
+    private fun createBaseIntent(action: String) = Intent(action)
         .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
         .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-        .putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId)
 
-    /**
-     * Builds a new {@link Intent} to make a verification call-out to Simprints ID with
-     * additional arbitrary {@link Metadata}.
-     * This intent will start an activity that returns a {@link Verification} object.
-     *
-     * @param moduleId identifies which module contains the registered beneficiary to verify.
-     * @param verifyId identifies which registered beneficiary to verify.
-     * @param metadata optional metadata to attach to the verification.
-     * @return a new verification {@link Intent}.
-     */
-    fun verify(moduleId: String, verifyId: String, metadata: Metadata) = verify(moduleId, verifyId)
-        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    private fun Intent.appendOptionalMetadata(metadata: Metadata?) =
+        if (metadata == null) this
+        else putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 }

@@ -10,8 +10,7 @@ object Constants {
     const val SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
     const val SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
     const val SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
-    const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT =
-        "com.simprints.id.REGISTER_LAST_BIOMETRICS";
+    const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT = "com.simprints.id.REGISTER_LAST_BIOMETRICS";
 
     // Mandatory extras
     const val SIMPRINTS_PROJECT_ID = "projectId";
