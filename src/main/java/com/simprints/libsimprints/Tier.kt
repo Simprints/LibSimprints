@@ -1,6 +1,6 @@
 package com.simprints.libsimprints;
 
-public enum Tier {
+enum class Tier {
     TIER_1,
     TIER_2,
     TIER_3,

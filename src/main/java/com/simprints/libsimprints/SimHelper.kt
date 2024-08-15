@@ -1,10 +1,6 @@
 package com.simprints.libsimprints;
 
-import android.content.Context;
-import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Intent
 
 /**
  * A helper class facilitating the construction of an {@link Intent} to call Simprints ID.
@@ -16,25 +12,16 @@ import androidx.annotation.Nullable;
  * <li> An identification call-out will collect fingerprints and search through a group of people.
  * The call-back data will either contain an array of {@link Identification} objects, or a {@link RefusalForm} object with additional refusal data.
  * <li> A verify call-out will collect fingerprints and verify a specific user. The call-back will return a {@link Verification} object, or additional data such as errors and refusal data.
- * <li> (COMING SOON) An update call-out will collect new fingerprints and link them to an existing GUID.
  * </ul><p>
+ *
+ * @param projectId identifies the project that is making the call-out. Will be checked if it matches the scanned project id upon signing-in.
+ * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
-public class SimHelper {
-
-    final private String projectId;
-    final private String userId;
-
-    /**
-     * Constructs a new helper for making call-outs to Simprints ID with the specified project id and user id.
-     *
-     * @param projectId identifies the project that is making the call-out. Will be checked if it matches the scanned project id upon signing-in.
-     * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
-     */
-    public SimHelper(@NonNull String projectId, @NonNull String userId) {
-        this.projectId = projectId;
-        this.userId = userId;
-    }
+@SuppressWarnings("unused", "WeakerAccess")
+data class SimHelper(
+    private val projectId: String,
+    private val userId: String
+) {
 
     /**
      * Builds a new {@link Intent} to make a registration call-out to Simprints ID.
@@ -43,13 +30,10 @@ public class SimHelper {
      * @param moduleId identifies which module to register into.
      * @return a new registration {@link Intent}.
      */
-    @NonNull
-    public Intent register(@NonNull String moduleId) {
-        return new Intent(Constants.SIMPRINTS_REGISTER_INTENT)
-                .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-                .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-                .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
-    }
+    fun register(moduleId: String) = Intent(Constants.SIMPRINTS_REGISTER_INTENT)
+        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
 
     /**
      * Builds a new {@link Intent} to make a registration call-out to Simprints ID
@@ -60,11 +44,8 @@ public class SimHelper {
      * @param metadata optional metadata to attach to the registration.
      * @return a new registration {@link Intent}.
      */
-    @NonNull
-    public Intent register(@NonNull String moduleId, @NonNull Metadata metadata) {
-        return register(moduleId)
-                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
-    }
+    fun register(moduleId: String, metadata: Metadata) = register(moduleId)
+        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 
     /**
      * (COMING SOON) Builds a new {@link Intent} to make an update call-out to Simprints ID.
@@ -73,14 +54,11 @@ public class SimHelper {
      * @param updateId identifies which beneficiary to update.
      * @return a new update {@link Intent}.
      */
-    @NonNull
-    public Intent update(@NonNull String moduleId, @NonNull String updateId) {
-        return new Intent(Constants.SIMPRINTS_UPDATE_INTENT)
-                .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-                .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-                .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-                .putExtra(Constants.SIMPRINTS_UPDATE_GUID, updateId);
-    }
+    fun update(moduleId: String, updateId: String) = Intent(Constants.SIMPRINTS_UPDATE_INTENT)
+        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+        .putExtra(Constants.SIMPRINTS_UPDATE_GUID, updateId)
 
     /**
      * (COMING SOON) Builds a new {@link Intent} to make an update call-out to Simprints ID
@@ -91,11 +69,8 @@ public class SimHelper {
      * @param metadata optional metadata to attach to the update.
      * @return a new update {@link Intent}.
      */
-    @NonNull
-    public Intent update(@NonNull String moduleId, @NonNull String updateId, @NonNull Metadata metadata) {
-        return update(moduleId, updateId)
-                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
-    }
+    fun update(moduleId: String, updateId: String, metadata: Metadata) = update(moduleId, updateId)
+        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
 
     /**
      * Builds a new {@link Intent} to make an identification call-out to Simprints ID.
@@ -104,14 +79,10 @@ public class SimHelper {
      * @param moduleId identifies which module to search in.
      * @return a new identification {@link Intent}.
      */
-    @NonNull
-    public Intent identify(@NonNull String moduleId) {
-        Intent intent = new Intent(Constants.SIMPRINTS_IDENTIFY_INTENT);
-        intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
-        intent.putExtra(Constants.SIMPRINTS_USER_ID, userId);
-        intent.putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
-        return intent;
-    }
+    fun identify(moduleId: String) = Intent(Constants.SIMPRINTS_IDENTIFY_INTENT)
+        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
 
     /**
      * Builds a new {@link Intent} to make an identification call-out to Simprints ID with
@@ -122,11 +93,8 @@ public class SimHelper {
      * @param metadata optional metadata to attach to the identification.
      * @return a new identification {@link Intent}.
      */
-    @NonNull
-    public Intent identify(@NonNull String moduleId, @NonNull Metadata metadata) {
-        return identify(moduleId)
-                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
-    }
+    fun identify(moduleId: String, metadata: Metadata) = identify(moduleId)
+        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 
     /**
      * Sends which GUID was confirmed in a session back to SimprintsId.
@@ -135,13 +103,11 @@ public class SimHelper {
      * @param selectedGuid the GUID that was confirmed in the host app.
      * @return a new confirm indentity {@link Intent}.
      */
-    public Intent confirmIdentity(@NonNull String sessionId, @Nullable String selectedGuid) {
-        Intent intent = new Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT);
-        intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
-        intent.putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
-        intent.putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid);
-        return intent;
-    }
+    fun confirmIdentity(sessionId: String, selectedGuid: String) =
+        Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT)
+            .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
+            .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
 
     /**
      * Builds a new {@link Intent} to register the templates captured during
@@ -153,13 +119,12 @@ public class SimHelper {
      * @param sessionId identifies the identification session.
      * @return a new registration for last biometrics {@link Intent}.
      */
-    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull String sessionId) {
-        return new Intent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
-                .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
-                .putExtra(Constants.SIMPRINTS_USER_ID, userId)
-                .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
-                .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId);
-    }
+    fun registerLastBiometrics(moduleId: String, sessionId: String) =
+        Intent(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT)
+            .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+            .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+            .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+            .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
 
     /**
      * Builds a new {@link Intent} to register the templates captured during
@@ -168,14 +133,13 @@ public class SimHelper {
      * valid results without capturing the templates again.
      *
      * @param moduleId  identifies which module to register into.
+     * @param sessionId identifies the identification session.
      * @param metadata  metadata to attach to the registration.
-     * @param sessionId identifies the identification session.
      * @return a new registration for last biometrics {@link Intent}.
      */
-    public Intent registerLastBiometrics(@NonNull String moduleId, @NonNull String sessionId, @NonNull Metadata metadata) {
-        return registerLastBiometrics(moduleId, sessionId)
-                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
-    }
+    fun registerLastBiometrics(moduleId: String, sessionId: String, metadata: Metadata) =
+        registerLastBiometrics(moduleId, sessionId)
+            .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 
     /**
      * Builds a new {@link Intent} to make a verification call-out to Simprints ID.
@@ -185,15 +149,11 @@ public class SimHelper {
      * @param verifyId identifies which registered beneficiary to verify.
      * @return a new verification {@link Intent}.
      */
-    @NonNull
-    public Intent verify(@NonNull String moduleId, @NonNull String verifyId) {
-        Intent intent = new Intent(Constants.SIMPRINTS_VERIFY_INTENT);
-        intent.putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId);
-        intent.putExtra(Constants.SIMPRINTS_USER_ID, userId);
-        intent.putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId);
-        intent.putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId);
-        return intent;
-    }
+    fun verify(moduleId: String, verifyId: String) = Intent(Constants.SIMPRINTS_VERIFY_INTENT)
+        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+        .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
+        .putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId)
 
     /**
      * Builds a new {@link Intent} to make a verification call-out to Simprints ID with
@@ -205,9 +165,6 @@ public class SimHelper {
      * @param metadata optional metadata to attach to the verification.
      * @return a new verification {@link Intent}.
      */
-    @NonNull
-    public Intent verify(@NonNull String moduleId, @NonNull String verifyId, @NonNull Metadata metadata) {
-        return verify(moduleId, verifyId)
-                .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString());
-    }
+    fun verify(moduleId: String, verifyId: String, metadata: Metadata) = verify(moduleId, verifyId)
+        .putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 }

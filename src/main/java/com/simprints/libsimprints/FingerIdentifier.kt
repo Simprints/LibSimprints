@@ -1,7 +1,7 @@
 package com.simprints.libsimprints;
 
 @SuppressWarnings("unused")
-public enum FingerIdentifier {
+enum class FingerIdentifier {
     RIGHT_5TH_FINGER,
     RIGHT_4TH_FINGER,
     RIGHT_3RD_FINGER,
