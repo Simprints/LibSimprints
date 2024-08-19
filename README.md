@@ -5,22 +5,10 @@
 
 *LibSimprints is the library used to pass data to and from the Simprints ID application.*
 
-**Installation from maven** 
+**Installation** 
 
-Gradle
 ```
-implementation 'com.simprints:libsimprints:2023.4.1'
-```
-
-Maven
-```
-<dependency>
-  <groupId>com.simprints</groupId>
-  <artifactId>libsimprints</artifactId>
-  <version>2023.4.1</version>
-  <type>pom</type>
-</dependency>
+implementation 'com.simprints:libsimprints:2024.8.1'
 ```
 
-**Documentation**
-https://sites.google.com/simprints.com/simprints-for-developers/integrating-w-simprints/getting-started
+[Documentation](https://simprints.gitbook.io/docs/development/simprints-for-developers/integrating-with-simprints)
