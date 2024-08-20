@@ -17,12 +17,17 @@ import com.simprints.libsimprints.Verification
  *
  */
 data class SimprintsResponse(
+    // Data common to all requests
     val resultCode: Int,
     val biometricsComplete: Boolean = false,
     val sessionId: String? = null,
 
+    // Request-specific data - only one field will be non-null
     val registration: Registration? = null,
     val verification: Verification? = null,
     val identifications: List<Identification>? = null,
     val refusal: RefusalForm? = null,
+
+    // Co-sync data
+    val subjectActions: String? = null,
 )

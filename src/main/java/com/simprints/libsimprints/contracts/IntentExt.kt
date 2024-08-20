@@ -24,28 +24,29 @@ internal fun Intent?.toResult(resultCode: Int): SimprintsResponse = when {
         resultCode = resultCode,
         biometricsComplete = getBooleanExtra(Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK, false),
         sessionId = getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-        refusal = getParcelableExtra(Constants.SIMPRINTS_REFUSAL_FORM)
+        refusal = getParcelableExtra(Constants.SIMPRINTS_REFUSAL_FORM),
     )
 
     hasExtra(Constants.SIMPRINTS_REGISTRATION) -> SimprintsResponse(
         resultCode = resultCode,
         biometricsComplete = getBooleanExtra(Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK, false),
         sessionId = getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-        registration = getParcelableExtra(Constants.SIMPRINTS_REGISTRATION)
+        registration = getParcelableExtra(Constants.SIMPRINTS_REGISTRATION),
+        subjectActions = getStringExtra(Constants.SIMPRINTS_COSYNC_SUBJECT_ACTIONS),
     )
 
     hasExtra(Constants.SIMPRINTS_IDENTIFICATIONS) -> SimprintsResponse(
         resultCode = resultCode,
         biometricsComplete = getBooleanExtra(Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK, false),
         sessionId = getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-        identifications = getParcelableArrayExtra(Constants.SIMPRINTS_VERIFICATION) as List<Identification>?
+        identifications = getParcelableArrayExtra(Constants.SIMPRINTS_VERIFICATION) as List<Identification>?,
     )
 
     hasExtra(Constants.SIMPRINTS_VERIFICATION) -> SimprintsResponse(
         resultCode = resultCode,
         biometricsComplete = getBooleanExtra(Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK, false),
         sessionId = getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-        verification = getParcelableExtra(Constants.SIMPRINTS_VERIFICATION)
+        verification = getParcelableExtra(Constants.SIMPRINTS_VERIFICATION),
     )
 
     else -> SimprintsResponse(resultCode = Constants.SIMPRINTS_CANCELLED)
