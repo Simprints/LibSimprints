@@ -6,11 +6,11 @@ import android.app.Activity;
 object Constants {
 
     // Intents
-    const val SIMPRINTS_REGISTER_INTENT = "com.simprints.id.REGISTER";
+    const val SIMPRINTS_ENROL_INTENT = "com.simprints.id.REGISTER";
     const val SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY";
     const val SIMPRINTS_VERIFY_INTENT = "com.simprints.id.VERIFY";
-    const val SIMPRINTS_SELECT_GUID_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
-    const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT = "com.simprints.id.REGISTER_LAST_BIOMETRICS";
+    const val SIMPRINTS_CONFIRM_IDENTITY_INTENT = "com.simprints.id.CONFIRM_IDENTITY";
+    const val SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT = "com.simprints.id.REGISTER_LAST_BIOMETRICS";
 
     // Mandatory extras
     const val SIMPRINTS_PROJECT_ID = "projectId";
@@ -20,7 +20,7 @@ object Constants {
     // Mandatory for SIMPRINTS_VERIFY_INTENT
     const val SIMPRINTS_VERIFY_GUID = "verifyGuid";
 
-    // Mandatory for SIMPRINTS_SELECT_GUID_INTENT
+    // Mandatory for SIMPRINTS_CONFIRM_IDENTITY_INTENT
     const val SIMPRINTS_SELECTED_GUID = "selectedGuid";
     const val SIMPRINTS_SESSION_ID = "sessionId";
 
@@ -91,4 +91,22 @@ object Constants {
     // These two values represent data that could be null. They only apply to projects using cosync
     const val SIMPRINTS_COSYNC_EVENT = "events";
     const val SIMPRINTS_COSYNC_SUBJECT_ACTIONS = "subjectActions";
+
+    @Deprecated(
+        "Use SIMPRINTS_ENROL_INTENT instead",
+        replaceWith = ReplaceWith("SIMPRINTS_ENROL_INTENT")
+    )
+    const val SIMPRINTS_REGISTER_INTENT = SIMPRINTS_ENROL_INTENT
+
+    @Deprecated(
+        "Use SIMPRINTS_CONFIRM_IDENTITY_INTENT instead",
+        replaceWith = ReplaceWith("SIMPRINTS_CONFIRM_IDENTITY_INTENT")
+    )
+    const val SIMPRINTS_SELECT_GUID_INTENT = SIMPRINTS_CONFIRM_IDENTITY_INTENT
+
+    @Deprecated(
+        "Use SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT instead",
+        replaceWith = ReplaceWith("SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT")
+    )
+    const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT = SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT
 }

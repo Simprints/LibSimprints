@@ -45,7 +45,7 @@ sealed class SimprintsRequest {
         val metadata: Metadata? = null,
     ) : SimprintsRequest() {
 
-        override fun toIntent() = Intent(Constants.SIMPRINTS_REGISTER_INTENT)
+        override fun toIntent() = Intent(Constants.SIMPRINTS_ENROL_INTENT)
             .appendAuthFields(projectId, userId)
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .appendOptionalMetadata(metadata)
@@ -118,7 +118,7 @@ sealed class SimprintsRequest {
         val sessionId: String,
         val selectedGuid: String,
     ) : SimprintsRequest() {
-        override fun toIntent() = Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT)
+        override fun toIntent() = Intent(Constants.SIMPRINTS_CONFIRM_IDENTITY_INTENT)
             .appendAuthFields(projectId, userId)
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
             .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
@@ -144,7 +144,7 @@ sealed class SimprintsRequest {
         val sessionId: String,
         val metadata: Metadata? = null,
     ) : SimprintsRequest() {
-        override fun toIntent() = Intent(Constants.SIMPRINTS_SELECT_GUID_INTENT)
+        override fun toIntent() = Intent(Constants.SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT)
             .appendAuthFields(projectId, userId)
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
