@@ -18,6 +18,14 @@ class IdentificationTest {
         assertEquals(expected, actual)
     }
 
+
+    @Test
+    fun `test verification confidence`() {
+        val identification = Identification("case-id", 42, Tier.TIER_2)
+
+        assertEquals(42.0f, identification.getConfidence())
+    }
+
     @Test
     fun `test sorting`() {
         val topId = Identification("top-id", 99, Tier.TIER_1)

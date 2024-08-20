@@ -11,10 +11,12 @@ import kotlinx.parcelize.Parcelize
  * @param guid       Global unique id of the verified person
  */
 @Parcelize
-data class Verification(
+data class Verification @JvmOverloads constructor(
     private val confidence: Int,
     val tier: Tier,
     val guid: String,
+    // TODO change to val once it is correctly returned from SID
+    var isSuccess: Boolean = false,
 ) : Parcelable {
 
     fun getConfidence(): Float = confidence.toFloat()

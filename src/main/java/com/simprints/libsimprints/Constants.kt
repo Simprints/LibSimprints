@@ -24,6 +24,9 @@ object Constants {
     const val SIMPRINTS_SELECTED_GUID = "selectedGuid"
     const val SIMPRINTS_SESSION_ID = "sessionId"
 
+    // Special case value for SIMPRINTS_CONFIRM_IDENTITY_INTENT when none of the guids are selected
+    const val SIMPRINTS_SELECTED_GUID_NONE = "none_selected"
+
     // Optional extras
     const val SIMPRINTS_CALLING_PACKAGE = "packageName"
     const val SIMPRINTS_BIOMETRIC_DATA_SOURCE = "biometricDataSource"

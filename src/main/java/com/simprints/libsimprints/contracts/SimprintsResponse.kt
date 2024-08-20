@@ -73,15 +73,23 @@ data class SimprintsResponse(
                 identifications = intent.getParcelableArrayListExtra<Identification>(Constants.SIMPRINTS_IDENTIFICATIONS) as List<Identification>?,
             )
 
-            intent.hasExtra(Constants.SIMPRINTS_VERIFICATION) -> SimprintsResponse(
-                resultCode = resultCode,
-                biometricsComplete = intent.getBooleanExtra(
-                    Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                    false
-                ),
-                sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-                verification = intent.getParcelableExtra(Constants.SIMPRINTS_VERIFICATION),
-            )
+            intent.hasExtra(Constants.SIMPRINTS_VERIFICATION) -> {
+                val verification = intent.getParcelableExtra(Constants.SIMPRINTS_VERIFICATION) as Verification?
+
+                SimprintsResponse(
+                    resultCode = resultCode,
+                    biometricsComplete = intent.getBooleanExtra(
+                        Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
+                        false
+                    ),
+                    sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
+                    verification = verification?.also {
+                        // In SID 2024.2.0 this value is returned next to the verification object,
+                        // so it needs to be updated on during response parsing
+                        it.isSuccess = intent.getBooleanExtra(Constants.SIMPRINTS_VERIFICATION_SUCCESS, false)
+                    },
+                )
+            }
 
             else -> SimprintsResponse(resultCode = Constants.SIMPRINTS_CANCELLED)
         }
