@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.simprints.libsimprints.Constants;
-import com.simprints.libsimprints.FingerIdentifier;
 import com.simprints.libsimprints.Identification;
 import com.simprints.libsimprints.Metadata;
 import com.simprints.libsimprints.RefusalForm;
@@ -202,9 +201,6 @@ public class JavaRegressionTests {
     @Test
     public void enrolmentResultHandling() {
         Registration registration = new Registration("guid-id");
-        registration.setTemplate(FingerIdentifier.LEFT_3RD_FINGER, new byte[]{3, 4, 5});
-        registration.setTemplate(FingerIdentifier.RIGHT_3RD_FINGER, new byte[]{1, 2, 3});
-        registration.setFaceTemplate(new byte[]{6, 7, 8});
 
         Intent intent = createIntentWithExtra(Constants.SIMPRINTS_REGISTRATION, registration);
 

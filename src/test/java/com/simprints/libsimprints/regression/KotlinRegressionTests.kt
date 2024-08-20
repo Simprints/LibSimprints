@@ -178,11 +178,7 @@ class KotlinRegressionTests {
 
     @Test
     fun enrolmentResultHandling() {
-        val registration = Registration("case-id").apply {
-            setTemplate(FingerIdentifier.LEFT_3RD_FINGER, byteArrayOf(1, 2, 3))
-            setTemplate(FingerIdentifier.RIGHT_3RD_FINGER, byteArrayOf(4, 5, 6))
-            setFaceTemplate(byteArrayOf(7, 8, 9))
-        }
+        val registration = Registration("case-id")
         val intent = Intent().putExtras(Bundle().apply {
             putParcelable(Constants.SIMPRINTS_REGISTRATION, registration)
         })
