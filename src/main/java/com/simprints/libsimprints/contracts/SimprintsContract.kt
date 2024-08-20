@@ -31,5 +31,5 @@ class SimprintsContract() : ActivityResultContract<SimprintsRequest, SimprintsRe
     override fun createIntent(context: Context, input: SimprintsRequest): Intent = input.toIntent()
 
     override fun parseResult(resultCode: Int, intent: Intent?): SimprintsResponse =
-        intent.toResult(resultCode)
+        SimprintsResponse.fromIntent(intent, resultCode)
 }

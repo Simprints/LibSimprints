@@ -20,7 +20,7 @@ class SimprintsResponseTest {
     @Test
     fun `correctly parses null intent`() {
         val intent: Intent? = null
-        val result = intent.toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_CANCELLED, result.resultCode)
     }
@@ -28,17 +28,17 @@ class SimprintsResponseTest {
     @Test
     fun `correctly parses empty intent`() {
         val intent: Intent? = null
-        val result = intent.toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_CANCELLED, result.resultCode)
     }
 
     @Test
     fun `correctly parses error result intent`() {
-        val result = Intent()
+        val intent = Intent()
             // This should be ignored in final data
             .putExtra(Constants.SIMPRINTS_REFUSAL_FORM, RefusalForm("reason", "action"))
-            .toResult(Constants.SIMPRINTS_UNEXPECTED_ERROR)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_UNEXPECTED_ERROR)
 
         assertEquals(Constants.SIMPRINTS_UNEXPECTED_ERROR, result.resultCode)
         assertNull(result.refusal)
@@ -49,9 +49,9 @@ class SimprintsResponseTest {
 
     @Test
     fun `correctly parses refusal intent`() {
-        val result = Intent()
+        val intent = Intent()
             .putExtra(Constants.SIMPRINTS_REFUSAL_FORM, RefusalForm("reason", "action"))
-            .toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_OK, result.resultCode)
         assertNotNull(result.refusal)
@@ -62,9 +62,9 @@ class SimprintsResponseTest {
 
     @Test
     fun `correctly parses enrolment intent`() {
-        val result = Intent()
+        val intent = Intent()
             .putExtra(Constants.SIMPRINTS_REGISTRATION, Registration("guid"))
-            .toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_OK, result.resultCode)
         assertNull(result.refusal)
@@ -75,12 +75,12 @@ class SimprintsResponseTest {
 
     @Test
     fun `correctly parses identification intent`() {
-        val result = Intent()
+        val intent = Intent()
             .putExtra(
                 Constants.SIMPRINTS_IDENTIFICATIONS,
                 arrayListOf(Identification("guid", 42, Tier.TIER_1))
             )
-            .toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_OK, result.resultCode)
         assertNull(result.refusal)
@@ -91,9 +91,9 @@ class SimprintsResponseTest {
 
     @Test
     fun `correctly parses verification intent`() {
-        val result = Intent()
+        val intent = Intent()
             .putExtra(Constants.SIMPRINTS_VERIFICATION, Verification(42, Tier.TIER_1, "guid"))
-            .toResult(Constants.SIMPRINTS_OK)
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
         assertEquals(Constants.SIMPRINTS_OK, result.resultCode)
         assertNull(result.refusal)
@@ -101,5 +101,4 @@ class SimprintsResponseTest {
         assertNull(result.identifications)
         assertNotNull(result.verification)
     }
-    
 }

@@ -150,4 +150,12 @@ sealed class SimprintsRequest {
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
             .appendOptionalMetadata(metadata)
     }
+
+    protected fun Intent.appendAuthFields(projectId: String, userId: String) = this
+        .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
+        .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+
+    protected fun Intent.appendOptionalMetadata(metadata: Metadata?) =
+        if (metadata == null) this
+        else putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
 }
