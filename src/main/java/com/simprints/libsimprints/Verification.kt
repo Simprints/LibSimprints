@@ -10,7 +10,6 @@ import kotlinx.parcelize.Parcelize
  * @param tier       The tier score derived from the confidence
  * @param guid       Global unique id of the verified person
  */
-@SuppressWarnings("unused", "WeakerAccess")
 @Parcelize
 data class Verification(
     private val confidence: Int,

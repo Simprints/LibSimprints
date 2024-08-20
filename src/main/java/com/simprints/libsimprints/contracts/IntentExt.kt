@@ -39,7 +39,7 @@ internal fun Intent?.toResult(resultCode: Int): SimprintsResponse = when {
         resultCode = resultCode,
         biometricsComplete = getBooleanExtra(Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK, false),
         sessionId = getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-        identifications = getParcelableArrayExtra(Constants.SIMPRINTS_VERIFICATION) as List<Identification>?,
+        identifications = getParcelableArrayListExtra<Identification>(Constants.SIMPRINTS_IDENTIFICATIONS) as List<Identification>?,
     )
 
     hasExtra(Constants.SIMPRINTS_VERIFICATION) -> SimprintsResponse(

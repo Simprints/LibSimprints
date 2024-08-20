@@ -3,7 +3,6 @@ package com.simprints.libsimprints;
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-@SuppressWarnings("unused", "WeakerAccess")
 @Parcelize
 data class Registration @JvmOverloads constructor(
     val guid: String,
@@ -16,6 +15,8 @@ data class Registration @JvmOverloads constructor(
     }
 
     fun getTemplate(fingerId: FingerIdentifier): ByteArray = templates[fingerId] ?: byteArrayOf()
+
+    fun getTemplates(): Map<FingerIdentifier, ByteArray> = templates
 
     fun setFaceTemplate(faceTemplate: ByteArray) {
         faceTemplates.add(faceTemplate)
