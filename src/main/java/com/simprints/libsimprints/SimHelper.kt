@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 import android.content.Intent
 

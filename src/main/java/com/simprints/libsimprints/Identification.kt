@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

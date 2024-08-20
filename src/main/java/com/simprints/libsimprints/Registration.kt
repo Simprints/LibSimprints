@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -42,6 +42,6 @@ data class Registration @JvmOverloads constructor(
         for (i in faceTemplates.indices) {
             if (faceTemplates[i].contentEquals(other.faceTemplates.getOrNull(i)) == false) return false
         }
-        return true;
+        return true
     }
 }

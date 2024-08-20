@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 enum class FingerIdentifier {
     RIGHT_5TH_FINGER,

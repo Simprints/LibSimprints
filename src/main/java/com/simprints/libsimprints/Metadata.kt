@@ -37,11 +37,11 @@ data class Metadata(
             throw InvalidMetadataException("The metadata string is not a valid JSON object string.")
         }
         // Make sure the metadata string does not contain nested arrays or key-value mappings
-        val keys = json.keys();
+        val keys = json.keys()
         while (keys.hasNext()) {
-            val key = keys.next();
+            val key = keys.next()
             if (json.optJSONArray(key) != null || json.optJSONObject(key) != null)
-                throw InvalidMetadataException("Only boolean, string, integer and floating point values are allowed.");
+                throw InvalidMetadataException("Only boolean, string, integer and floating point values are allowed.")
         }
     }
 
@@ -83,9 +83,9 @@ data class Metadata(
 
     private fun putObject(key: String, value: Any): Metadata {
         try {
-            json.put(key, value);
+            json.put(key, value)
         } catch (e: JSONException) {
-            throw RuntimeException(e);
+            throw RuntimeException(e)
         }
         return this
     }

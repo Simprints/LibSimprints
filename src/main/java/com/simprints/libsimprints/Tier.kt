@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 enum class Tier {
     TIER_1,
