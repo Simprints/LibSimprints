@@ -91,15 +91,4 @@ object Constants {
     // These two values represent data that could be null. They only apply to projects using cosync
     const val SIMPRINTS_COSYNC_EVENT = "events";
     const val SIMPRINTS_COSYNC_SUBJECT_ACTIONS = "subjectActions";
-
-    // Deprecated extras
-    @Deprecated("Use {@link #SIMPRINTS_PROJECT_ID} instead.")
-    const val SIMPRINTS_API_KEY = "apiKey";
-
-    // Deprecated result codes
-    @Deprecated("Use {@link #SIMPRINTS_MISSING_PROJECT_ID} instead.")
-    const val SIMPRINTS_MISSING_API_KEY = Activity.RESULT_FIRST_USER;
-
-    @Deprecated("Use {@link #SIMPRINTS_INVALID_PROJECT_ID} instead.")
-    const val SIMPRINTS_INVALID_API_KEY = Activity.RESULT_FIRST_USER + 1;
 }
