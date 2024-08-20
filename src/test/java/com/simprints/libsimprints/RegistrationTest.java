@@ -24,6 +24,7 @@ public class RegistrationTest {
         final byte[] right3rd = {7};
         final byte[] rightThumb = {1, 0};
         final byte[] rightIndex = {0};
+        final byte[] face = {7, 1, 3, 7, 0, 5};
 
 
         Registration exampleRegistration = new Registration("case-id");
@@ -37,6 +38,7 @@ public class RegistrationTest {
         exampleRegistration.setTemplate(FingerIdentifier.RIGHT_3RD_FINGER, right3rd);
         exampleRegistration.setTemplate(FingerIdentifier.RIGHT_INDEX_FINGER, rightIndex);
         exampleRegistration.setTemplate(FingerIdentifier.RIGHT_THUMB, rightThumb);
+        exampleRegistration.setFaceTemplate(face);
 
         Parcel parcel = Parcel.obtain();
         exampleRegistration.writeToParcel(parcel, 0);

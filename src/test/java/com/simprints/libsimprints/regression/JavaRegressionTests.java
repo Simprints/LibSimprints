@@ -204,6 +204,7 @@ public class JavaRegressionTests {
         Registration registration = new Registration("guid-id");
         registration.setTemplate(FingerIdentifier.LEFT_3RD_FINGER, new byte[]{3, 4, 5});
         registration.setTemplate(FingerIdentifier.RIGHT_3RD_FINGER, new byte[]{1, 2, 3});
+        registration.setFaceTemplate(new byte[]{6, 7, 8});
 
         Intent intent = createIntentWithExtra(Constants.SIMPRINTS_REGISTRATION, registration);
 
