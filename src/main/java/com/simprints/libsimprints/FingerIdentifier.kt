@@ -1,5 +1,6 @@
 package com.simprints.libsimprints
 
+@Deprecated("Used only in a deprecated data class")
 enum class FingerIdentifier {
     RIGHT_5TH_FINGER,
     RIGHT_4TH_FINGER,

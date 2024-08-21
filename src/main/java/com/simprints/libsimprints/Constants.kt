@@ -85,6 +85,7 @@ object Constants {
 
     // Result extras
     const val SIMPRINTS_REGISTRATION = "registration"
+    const val SIMPRINTS_ENROLMENT = "enrolment"
     const val SIMPRINTS_IDENTIFICATIONS = "identification"
     const val SIMPRINTS_VERIFICATION = "verification"
     const val SIMPRINTS_VERIFICATION_SUCCESS = "verificationSuccess"
