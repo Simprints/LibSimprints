@@ -28,12 +28,14 @@ object Constants {
     const val SIMPRINTS_SELECTED_GUID_NONE = "none_selected"
 
     // Optional extras
-    const val SIMPRINTS_CALLING_PACKAGE = "packageName"
     const val SIMPRINTS_BIOMETRIC_DATA_SOURCE = "biometricDataSource"
     const val SIMPRINTS_METADATA = "metadata"
 
     // Optional keys in SIMPRINTS_METADATA
     const val SIMPRINTS_SUBJECT_AGE = "subjectAge"
+
+    // Request meta data added to the intent
+    const val SIMPRINTS_LIB_VERSION = "versionCode"
 
     // Custom callout parameters for particular integrations: Don't include if not needed
     const val SIMPRINTS_RESULT_FORMAT = "resultFormat"
