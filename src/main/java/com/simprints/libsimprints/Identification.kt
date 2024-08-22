@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -10,7 +10,6 @@ import kotlinx.parcelize.Parcelize
  * @param confidence An int containing the (matching) confidence
  * @param tier       The tier score derived from the confidence
  */
-@SuppressWarnings("unused")
 @Parcelize
 data class Identification(
     val guid: String,

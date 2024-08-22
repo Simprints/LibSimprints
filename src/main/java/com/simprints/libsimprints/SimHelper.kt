@@ -1,4 +1,4 @@
-package com.simprints.libsimprints;
+package com.simprints.libsimprints
 
 import android.content.Intent
 
@@ -18,6 +18,7 @@ import android.content.Intent
  * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
  */
 @SuppressWarnings("unused", "WeakerAccess")
+@Deprecated("Use SimprintsContract instead")
 data class SimHelper(
     private val projectId: String,
     private val userId: String
@@ -31,6 +32,7 @@ data class SimHelper(
      * @param metadata optional metadata to attach to the registration if provided.
      * @return a new registration {@link Intent}.
      */
+    @Deprecated("Use SimprintsContract and SimprintsRequest.Enrol instead")
     @JvmOverloads
     fun register(
         moduleId: String,
@@ -47,6 +49,7 @@ data class SimHelper(
      * @param metadata optional metadata to attach to the identification if provided.
      * @return a new identification {@link Intent}.
      */
+    @Deprecated("Use SimprintsContract and SimprintsRequest.Identify instead")
     @JvmOverloads
     fun identify(
         moduleId: String,
@@ -64,6 +67,7 @@ data class SimHelper(
      * @param metadata optional metadata to attach to the verification if provided.
      * @return a new verification {@link Intent}.
      */
+    @Deprecated("Use SimprintsContract and SimprintsRequest.Verify instead")
     @JvmOverloads
     fun verify(
         moduleId: String,
@@ -81,6 +85,7 @@ data class SimHelper(
      * @param selectedGuid the GUID that was confirmed in the host app.
      * @return a new confirm indentity {@link Intent}.
      */
+    @Deprecated("Use SimprintsContract and SimprintsRequest.ConfirmIdentity instead")
     fun confirmIdentity(
         sessionId: String,
         selectedGuid: String,
@@ -99,6 +104,7 @@ data class SimHelper(
      * @param metadata  metadata to attach to the registration if provided.
      * @return a new registration for last biometrics {@link Intent}.
      */
+    @Deprecated("Use SimprintsContract and SimprintsRequest.EnrolLastBiometric instead")
     @JvmOverloads
     fun registerLastBiometrics(
         moduleId: String,

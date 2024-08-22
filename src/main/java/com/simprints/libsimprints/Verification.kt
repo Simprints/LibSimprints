@@ -10,12 +10,13 @@ import kotlinx.parcelize.Parcelize
  * @param tier       The tier score derived from the confidence
  * @param guid       Global unique id of the verified person
  */
-@SuppressWarnings("unused", "WeakerAccess")
 @Parcelize
-data class Verification(
+data class Verification @JvmOverloads constructor(
     private val confidence: Int,
     val tier: Tier,
     val guid: String,
+    // TODO change to val once it is correctly returned from SID
+    var isSuccess: Boolean = false,
 ) : Parcelable {
 
     fun getConfidence(): Float = confidence.toFloat()
