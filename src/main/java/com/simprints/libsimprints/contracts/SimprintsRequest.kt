@@ -1,6 +1,7 @@
 package com.simprints.libsimprints.contracts
 
 import android.content.Intent
+import com.simprints.libsimprints.BuildConfig
 import com.simprints.libsimprints.Constants
 import com.simprints.libsimprints.Metadata
 
@@ -47,6 +48,7 @@ sealed class SimprintsRequest {
 
         override fun toIntent() = Intent(Constants.SIMPRINTS_ENROL_INTENT)
             .appendAuthFields(projectId, userId)
+            .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .appendOptionalMetadata(metadata)
     }
@@ -71,6 +73,7 @@ sealed class SimprintsRequest {
     ) : SimprintsRequest() {
         override fun toIntent() = Intent(Constants.SIMPRINTS_IDENTIFY_INTENT)
             .appendAuthFields(projectId, userId)
+            .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .appendOptionalMetadata(metadata)
     }
@@ -97,6 +100,7 @@ sealed class SimprintsRequest {
     ) : SimprintsRequest() {
         override fun toIntent() = Intent(Constants.SIMPRINTS_VERIFY_INTENT)
             .appendAuthFields(projectId, userId)
+            .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .putExtra(Constants.SIMPRINTS_VERIFY_GUID, verifyId)
             .appendOptionalMetadata(metadata)
@@ -120,6 +124,7 @@ sealed class SimprintsRequest {
     ) : SimprintsRequest() {
         override fun toIntent() = Intent(Constants.SIMPRINTS_CONFIRM_IDENTITY_INTENT)
             .appendAuthFields(projectId, userId)
+            .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
             .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
     }
@@ -146,14 +151,18 @@ sealed class SimprintsRequest {
     ) : SimprintsRequest() {
         override fun toIntent() = Intent(Constants.SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT)
             .appendAuthFields(projectId, userId)
+            .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_MODULE_ID, moduleId)
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
             .appendOptionalMetadata(metadata)
     }
 
-    protected fun Intent.appendAuthFields(projectId: String, userId: String) = this
+    protected fun Intent.appendAuthFields(projectId: String, userId: String): Intent = this
         .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
         .putExtra(Constants.SIMPRINTS_USER_ID, userId)
+
+    protected fun Intent.appendRequestMetaInformation() = this
+        .putExtra(Constants.SIMPRINTS_LIB_VERSION, BuildConfig.LIBRARY_VERSION_CODE)
 
     protected fun Intent.appendOptionalMetadata(metadata: Metadata?) =
         if (metadata == null) this

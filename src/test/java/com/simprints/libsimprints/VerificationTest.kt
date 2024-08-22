@@ -13,7 +13,7 @@ class VerificationTest {
 
     @Test
     fun `test verification parcelling`() {
-        val expected = Verification(42, Tier.TIER_2, "case-id", true)
+        val expected = Verification(42, Tier.TIER_2, "case-id")
         val actual = bundleOf("test" to expected).getParcelable<Verification>("test")
 
         assertEquals(expected, actual)
@@ -21,7 +21,7 @@ class VerificationTest {
 
     @Test
     fun `test verification confidence`() {
-        val verification = Verification(42, Tier.TIER_2, "case-id", true)
+        val verification = Verification(42, Tier.TIER_2, "case-id")
 
         assertEquals(42.0f, verification.getConfidence())
     }

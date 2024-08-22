@@ -13,7 +13,6 @@ buildscript {
 
 apply plugin: "com.android.library"
 apply plugin: "org.jetbrains.kotlin.android"
-apply plugin: "kotlin-parcelize"
 
 repositories {
     google()
@@ -21,6 +20,9 @@ repositories {
 }
 
 project.version = "2024.8.1"
+ext {
+    VERSION_CODE = 20240801
+}
 
 android {
     namespace = "com.simprints.libsimprints"
@@ -30,8 +32,10 @@ android {
         minSdkVersion 23
         targetSdkVersion 35
 
-        versionCode 2
         versionName project.version
+        // Version code should match the name as it is used in SID
+        // to determine the most appropriate response data format
+        versionCode project.property("VERSION_CODE")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,11 +57,14 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            buildConfigField("Integer", "LIBRARY_VERSION_CODE", "${project.property("VERSION_CODE")}")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             buildConfigField("String", "LIBRARY_PACKAGE_VERSION", "\"${project.version}\"")
+            buildConfigField("Integer", "LIBRARY_VERSION_CODE", "${project.property("VERSION_CODE")}")
         }
         staging {
             initWith release

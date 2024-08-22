@@ -2,10 +2,11 @@ package com.simprints.libsimprints.contracts
 
 import android.content.Intent
 import com.simprints.libsimprints.Constants
-import com.simprints.libsimprints.Identification
-import com.simprints.libsimprints.RefusalForm
-import com.simprints.libsimprints.Registration
-import com.simprints.libsimprints.Verification
+import com.simprints.libsimprints.contracts.data.Enrolment
+import com.simprints.libsimprints.contracts.data.Identification
+import com.simprints.libsimprints.contracts.data.RefusalForm
+import com.simprints.libsimprints.contracts.data.Verification
+import kotlin.let
 
 /**
  * Container class for all possible response data that Simprints ID can return.
@@ -25,7 +26,7 @@ data class SimprintsResponse(
     val sessionId: String? = null,
 
     // Request-specific data - only one field will be non-null
-    val registration: Registration? = null,
+    val enrolment: Enrolment? = null,
     val verification: Verification? = null,
     val identifications: List<Identification>? = null,
     val refusal: RefusalForm? = null,
@@ -38,60 +39,36 @@ data class SimprintsResponse(
 
         @Suppress("UNCHECKED_CAST")
         @JvmStatic
-        fun fromIntent(intent: Intent?, resultCode: Int): SimprintsResponse = when {
-            resultCode != Constants.SIMPRINTS_OK -> SimprintsResponse(resultCode = resultCode)
-            intent == null -> SimprintsResponse(resultCode = Constants.SIMPRINTS_CANCELLED)
-
-            intent.hasExtra(Constants.SIMPRINTS_REFUSAL_FORM) -> SimprintsResponse(
-                resultCode = resultCode,
-                biometricsComplete = intent.getBooleanExtra(
-                    Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                    false
-                ),
-                sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-                refusal = intent.getParcelableExtra(Constants.SIMPRINTS_REFUSAL_FORM),
-            )
-
-            intent.hasExtra(Constants.SIMPRINTS_REGISTRATION) -> SimprintsResponse(
-                resultCode = resultCode,
-                biometricsComplete = intent.getBooleanExtra(
-                    Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                    false
-                ),
-                sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-                registration = intent.getParcelableExtra(Constants.SIMPRINTS_REGISTRATION),
-                subjectActions = intent.getStringExtra(Constants.SIMPRINTS_COSYNC_SUBJECT_ACTIONS),
-            )
-
-            intent.hasExtra(Constants.SIMPRINTS_IDENTIFICATIONS) -> SimprintsResponse(
-                resultCode = resultCode,
-                biometricsComplete = intent.getBooleanExtra(
-                    Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                    false
-                ),
-                sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-                identifications = intent.getParcelableArrayListExtra<Identification>(Constants.SIMPRINTS_IDENTIFICATIONS) as List<Identification>?,
-            )
-
-            intent.hasExtra(Constants.SIMPRINTS_VERIFICATION) -> {
-                val verification = intent.getParcelableExtra(Constants.SIMPRINTS_VERIFICATION) as Verification?
-
-                SimprintsResponse(
-                    resultCode = resultCode,
-                    biometricsComplete = intent.getBooleanExtra(
-                        Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                        false
-                    ),
-                    sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-                    verification = verification?.also {
-                        // In SID 2024.2.0 this value is returned next to the verification object,
-                        // so it needs to be updated on during response parsing
-                        it.isSuccess = intent.getBooleanExtra(Constants.SIMPRINTS_VERIFICATION_SUCCESS, false)
-                    },
-                )
+        fun fromIntent(intent: Intent?, resultCode: Int): SimprintsResponse {
+            if (resultCode != Constants.SIMPRINTS_OK) {
+                return SimprintsResponse(resultCode = resultCode)
+            }
+            if (intent == null) {
+                return SimprintsResponse(resultCode = Constants.SIMPRINTS_CANCELLED)
             }
 
-            else -> SimprintsResponse(resultCode = Constants.SIMPRINTS_CANCELLED)
+            return SimprintsResponse(
+                resultCode = resultCode,
+                biometricsComplete = intent.getBooleanExtra(
+                    Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
+                    false
+                ),
+                sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
+
+                refusal = intent.getStringExtra(Constants.SIMPRINTS_REFUSAL_FORM)
+                    ?.let { RefusalForm.fromJson(it) },
+                enrolment = intent
+                    .getStringExtra(Constants.SIMPRINTS_ENROLMENT)
+                    ?.let { Enrolment.fromJson(it) },
+                identifications = intent
+                    .getStringExtra(Constants.SIMPRINTS_IDENTIFICATIONS)
+                    ?.let { Identification.fromJson(it) },
+                verification = intent
+                    .getStringExtra(Constants.SIMPRINTS_VERIFICATION)
+                    ?.let { Verification.fromJson(it) },
+
+                subjectActions = intent.getStringExtra(Constants.SIMPRINTS_COSYNC_SUBJECT_ACTIONS),
+            )
         }
     }
 }
