@@ -19,7 +19,7 @@ repositories {
     mavenCentral()
 }
 
-project.version = "2024.10.1"
+project.version = "2024.10.1-SNAPSHOT"
 ext {
     VERSION_CODE = 20241001
 }
