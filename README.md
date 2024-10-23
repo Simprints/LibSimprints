@@ -8,7 +8,7 @@
 **Installation** 
 
 ```
-implementation 'com.simprints:libsimprints:2024.8.1'
+implementation 'com.simprints:libsimprints:2024.10.1'
 ```
 
 [Documentation](https://simprints.gitbook.io/docs/development/simprints-for-developers/integrating-with-simprints)
