@@ -77,6 +77,12 @@ android {
             initWith debug
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
