@@ -13,19 +13,6 @@ nexusPublishing {
     }
 }
 
-task androidSourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    if (project.plugins.findPlugin("com.android.library")) {
-        from android.sourceSets.main.java.srcDirs
-    } else {
-        from sourceSets.main.java.srcDirs
-    }
-}
-
-artifacts {
-    archives androidSourcesJar
-}
-
 group = publishedGroupId
 version = libraryVersion
 
@@ -42,8 +29,6 @@ afterEvaluate {
                 } else {
                     from(components.java)
                 }
-
-                artifact androidSourcesJar
 
                 pom {
                     name = artifact
