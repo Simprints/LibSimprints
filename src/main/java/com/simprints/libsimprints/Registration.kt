@@ -7,10 +7,12 @@ import android.os.Parcelable.Creator
 @Deprecated("Use contracts.data.Enrolment instead")
 data class Registration @JvmOverloads constructor(
     val guid: String,
-    private val templates: MutableMap<FingerIdentifier, ByteArray> = mutableMapOf()
+    private val templates: MutableMap<FingerIdentifier, ByteArray> = mutableMapOf(),
 ) : Parcelable {
-
-    fun setTemplate(fingerId: FingerIdentifier, fingerTemplate: ByteArray) {
+    fun setTemplate(
+        fingerId: FingerIdentifier,
+        fingerTemplate: ByteArray,
+    ) {
         templates[fingerId] = fingerTemplate
     }
 
@@ -18,7 +20,10 @@ data class Registration @JvmOverloads constructor(
 
     override fun describeContents(): Int = 0
 
-    override fun writeToParcel(dest: Parcel, flags: Int) {
+    override fun writeToParcel(
+        dest: Parcel,
+        flags: Int,
+    ) {
         dest.writeString(guid)
         dest.writeInt(templates.size)
 
@@ -43,13 +48,12 @@ data class Registration @JvmOverloads constructor(
         for (fingerId in FingerIdentifier.entries) {
             if (!templates[fingerId].contentEquals(other.templates[fingerId])) return false
         }
-        return true;
+        return true
     }
 
     companion object {
         @JvmField
         val CREATOR = object : Creator<Registration> {
-
             override fun createFromParcel(parcel: Parcel): Registration? {
                 val guid = parcel.readString().orEmpty()
                 val nbOfTemplates = parcel.readInt()

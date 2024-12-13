@@ -20,7 +20,6 @@ import com.simprints.libsimprints.Metadata
  * [More info](https://simprints.gitbook.io/docs/development/simprints-for-developers/integrating-with-simprints)
  */
 sealed class SimprintsRequest {
-
     abstract val userId: String
     abstract val projectId: String
 
@@ -45,7 +44,6 @@ sealed class SimprintsRequest {
         val moduleId: String,
         val metadata: Metadata? = null,
     ) : SimprintsRequest() {
-
         override fun toIntent() = Intent(Constants.SIMPRINTS_ENROL_INTENT)
             .appendAuthFields(projectId, userId)
             .appendRequestMetaInformation()
@@ -157,14 +155,19 @@ sealed class SimprintsRequest {
             .appendOptionalMetadata(metadata)
     }
 
-    protected fun Intent.appendAuthFields(projectId: String, userId: String): Intent = this
+    protected fun Intent.appendAuthFields(
+        projectId: String,
+        userId: String,
+    ): Intent = this
         .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
         .putExtra(Constants.SIMPRINTS_USER_ID, userId)
 
     protected fun Intent.appendRequestMetaInformation() = this
         .putExtra(Constants.SIMPRINTS_LIB_VERSION, BuildConfig.LIBRARY_VERSION_CODE)
 
-    protected fun Intent.appendOptionalMetadata(metadata: Metadata?) =
-        if (metadata == null) this
-        else putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    protected fun Intent.appendOptionalMetadata(metadata: Metadata?) = if (metadata == null) {
+        this
+    } else {
+        putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    }
 }

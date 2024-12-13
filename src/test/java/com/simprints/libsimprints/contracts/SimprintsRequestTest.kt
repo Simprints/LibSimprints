@@ -10,15 +10,15 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class SimprintsRequestTest {
-
     @Test
     fun `creates correct enrol intent`() {
-        val intent = SimprintsRequest.Enrol(
-            projectId = "project-id",
-            userId = "user-id",
-            moduleId = "module-id",
-            metadata = Metadata().put("key", "value"),
-        ).toIntent()
+        val intent = SimprintsRequest
+            .Enrol(
+                projectId = "project-id",
+                userId = "user-id",
+                moduleId = "module-id",
+                metadata = Metadata().put("key", "value"),
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_ENROL_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))
@@ -29,12 +29,13 @@ class SimprintsRequestTest {
 
     @Test
     fun `creates correct identify intent`() {
-        val intent = SimprintsRequest.Identify(
-            projectId = "project-id",
-            userId = "user-id",
-            moduleId = "module-id",
-            metadata = Metadata().put("key", "value"),
-        ).toIntent()
+        val intent = SimprintsRequest
+            .Identify(
+                projectId = "project-id",
+                userId = "user-id",
+                moduleId = "module-id",
+                metadata = Metadata().put("key", "value"),
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_IDENTIFY_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))
@@ -45,13 +46,14 @@ class SimprintsRequestTest {
 
     @Test
     fun `creates correct verify intent`() {
-        val intent = SimprintsRequest.Verify(
-            projectId = "project-id",
-            userId = "user-id",
-            moduleId = "module-id",
-            verifyId = "guid",
-            metadata = Metadata().put("key", "value"),
-        ).toIntent()
+        val intent = SimprintsRequest
+            .Verify(
+                projectId = "project-id",
+                userId = "user-id",
+                moduleId = "module-id",
+                verifyId = "guid",
+                metadata = Metadata().put("key", "value"),
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_VERIFY_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))
@@ -63,12 +65,13 @@ class SimprintsRequestTest {
 
     @Test
     fun `creates correct confirm intent`() {
-        val intent = SimprintsRequest.ConfirmIdentity(
-            projectId = "project-id",
-            userId = "user-id",
-            sessionId = "session-id",
-            selectedGuid = "guid",
-        ).toIntent()
+        val intent = SimprintsRequest
+            .ConfirmIdentity(
+                projectId = "project-id",
+                userId = "user-id",
+                sessionId = "session-id",
+                selectedGuid = "guid",
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_CONFIRM_IDENTITY_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))
@@ -79,13 +82,14 @@ class SimprintsRequestTest {
 
     @Test
     fun `creates correct enrol last intent`() {
-        val intent = SimprintsRequest.EnrolLastBiometrics(
-            projectId = "project-id",
-            userId = "user-id",
-            moduleId = "module-id",
-            sessionId = "session-id",
-            metadata = Metadata().put("key", "value"),
-        ).toIntent()
+        val intent = SimprintsRequest
+            .EnrolLastBiometrics(
+                projectId = "project-id",
+                userId = "user-id",
+                moduleId = "module-id",
+                sessionId = "session-id",
+                metadata = Metadata().put("key", "value"),
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))
@@ -97,11 +101,12 @@ class SimprintsRequestTest {
 
     @Test
     fun `creates correct intent without meta data`() {
-        val intent = SimprintsRequest.Enrol(
-            projectId = "project-id",
-            userId = "user-id",
-            moduleId = "module-id",
-        ).toIntent()
+        val intent = SimprintsRequest
+            .Enrol(
+                projectId = "project-id",
+                userId = "user-id",
+                moduleId = "module-id",
+            ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_ENROL_INTENT, intent.action)
         assertEquals("project-id", intent.getStringExtra(Constants.SIMPRINTS_PROJECT_ID))

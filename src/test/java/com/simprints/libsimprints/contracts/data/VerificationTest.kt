@@ -7,7 +7,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class VerificationTest {
-
     @Test
     fun `test verification parcelling`() {
         val expected = Verification("case-id", 42f, Tier.TIER_4, false)

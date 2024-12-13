@@ -9,7 +9,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MetadataTest {
-
     @Test
     fun `constructs from blank string`() {
         val result = Metadata("      ")
@@ -27,7 +26,7 @@ class MetadataTest {
                 "key3": "value",
                 "key4": 0.5 
             }
-            """.trimIndent()
+            """.trimIndent(),
         )
 
         assertEquals("""{"key1":1,"key2":true,"key3":"value","key4":0.5}""", result.toString())

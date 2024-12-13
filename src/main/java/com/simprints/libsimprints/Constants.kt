@@ -4,7 +4,6 @@ import android.app.Activity
 
 @SuppressWarnings("unused", "WeakerAccess")
 object Constants {
-
     // Intents
     const val SIMPRINTS_ENROL_INTENT = "com.simprints.id.REGISTER"
     const val SIMPRINTS_IDENTIFY_INTENT = "com.simprints.id.IDENTIFY"
@@ -100,19 +99,19 @@ object Constants {
 
     @Deprecated(
         "Use SIMPRINTS_ENROL_INTENT instead",
-        replaceWith = ReplaceWith("SIMPRINTS_ENROL_INTENT")
+        replaceWith = ReplaceWith("SIMPRINTS_ENROL_INTENT"),
     )
     const val SIMPRINTS_REGISTER_INTENT = SIMPRINTS_ENROL_INTENT
 
     @Deprecated(
         "Use SIMPRINTS_CONFIRM_IDENTITY_INTENT instead",
-        replaceWith = ReplaceWith("SIMPRINTS_CONFIRM_IDENTITY_INTENT")
+        replaceWith = ReplaceWith("SIMPRINTS_CONFIRM_IDENTITY_INTENT"),
     )
     const val SIMPRINTS_SELECT_GUID_INTENT = SIMPRINTS_CONFIRM_IDENTITY_INTENT
 
     @Deprecated(
         "Use SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT instead",
-        replaceWith = ReplaceWith("SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT")
+        replaceWith = ReplaceWith("SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT"),
     )
     const val SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT = SIMPRINTS_ENROL_LAST_BIOMETRICS_INTENT
 }

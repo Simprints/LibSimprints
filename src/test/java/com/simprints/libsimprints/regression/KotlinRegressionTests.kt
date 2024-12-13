@@ -1,10 +1,11 @@
+@file:Suppress("DEPRECATION")
+
 package com.simprints.libsimprints.regression
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.simprints.libsimprints.Constants
-import com.simprints.libsimprints.FingerIdentifier
 import com.simprints.libsimprints.Identification
 import com.simprints.libsimprints.Metadata
 import com.simprints.libsimprints.RefusalForm
@@ -12,7 +13,7 @@ import com.simprints.libsimprints.Registration
 import com.simprints.libsimprints.SimHelper
 import com.simprints.libsimprints.Tier
 import com.simprints.libsimprints.Verification
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.also
@@ -25,19 +26,18 @@ import kotlin.apply
  */
 @RunWith(AndroidJUnit4::class)
 class KotlinRegressionTests {
-
     @Test
     fun enrolmentSetUp() {
         val intent = SimHelper("project-id", "user-id").register("module-id")
 
-        assertEquals(Constants.SIMPRINTS_REGISTER_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_REGISTER_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
-                Constants.SIMPRINTS_MODULE_ID
+                Constants.SIMPRINTS_MODULE_ID,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
     }
 
@@ -45,15 +45,15 @@ class KotlinRegressionTests {
     fun enrolmentWithMetaDataSetUp() {
         val intent = SimHelper("project-id", "user-id").register("module-id", createMetadata())
 
-        assertEquals(Constants.SIMPRINTS_REGISTER_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_REGISTER_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_MODULE_ID,
-                Constants.SIMPRINTS_METADATA
+                Constants.SIMPRINTS_METADATA,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
         assertEquals(KEY_VALUE_JSON, intent.getStringExtra(Constants.SIMPRINTS_METADATA))
     }
@@ -62,14 +62,14 @@ class KotlinRegressionTests {
     fun identificationSetUp() {
         val intent = SimHelper("project-id", "user-id").identify("module-id")
 
-        assertEquals(Constants.SIMPRINTS_IDENTIFY_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_IDENTIFY_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
-                Constants.SIMPRINTS_MODULE_ID
+                Constants.SIMPRINTS_MODULE_ID,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
     }
 
@@ -77,15 +77,15 @@ class KotlinRegressionTests {
     fun identificationWithMetaDataSetUp() {
         val intent = SimHelper("project-id", "user-id").identify("module-id", createMetadata())
 
-        assertEquals(Constants.SIMPRINTS_IDENTIFY_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_IDENTIFY_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_MODULE_ID,
-                Constants.SIMPRINTS_METADATA
+                Constants.SIMPRINTS_METADATA,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
         assertEquals(KEY_VALUE_JSON, intent.getStringExtra(Constants.SIMPRINTS_METADATA))
     }
@@ -94,7 +94,7 @@ class KotlinRegressionTests {
     fun verificationSetUp() {
         val intent = SimHelper("project-id", "user-id").verify("module-id", "guid")
 
-        assertEquals(Constants.SIMPRINTS_VERIFY_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_VERIFY_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
@@ -102,7 +102,7 @@ class KotlinRegressionTests {
                 Constants.SIMPRINTS_MODULE_ID,
                 Constants.SIMPRINTS_VERIFY_GUID,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
     }
 
@@ -111,16 +111,16 @@ class KotlinRegressionTests {
         val intent = SimHelper("project-id", "user-id")
             .verify("module-id", "guid", createMetadata())
 
-        assertEquals(Constants.SIMPRINTS_VERIFY_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_VERIFY_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_MODULE_ID,
                 Constants.SIMPRINTS_VERIFY_GUID,
-                Constants.SIMPRINTS_METADATA
+                Constants.SIMPRINTS_METADATA,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
         assertEquals(KEY_VALUE_JSON, intent.getStringExtra(Constants.SIMPRINTS_METADATA))
     }
@@ -129,15 +129,15 @@ class KotlinRegressionTests {
     fun confirmSetUp() {
         val intent = SimHelper("project-id", "user-id").confirmIdentity("module-id", "guid")
 
-        assertEquals(Constants.SIMPRINTS_SELECT_GUID_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_SELECT_GUID_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_SESSION_ID,
-                Constants.SIMPRINTS_SELECTED_GUID
+                Constants.SIMPRINTS_SELECTED_GUID,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
     }
 
@@ -145,15 +145,15 @@ class KotlinRegressionTests {
     fun enrolLastSetUp() {
         val intent = SimHelper("project-id", "user-id").registerLastBiometrics("module-id", "guid")
 
-        assertEquals(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
                 Constants.SIMPRINTS_USER_ID,
                 Constants.SIMPRINTS_MODULE_ID,
-                Constants.SIMPRINTS_SESSION_ID
+                Constants.SIMPRINTS_SESSION_ID,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
     }
 
@@ -162,7 +162,7 @@ class KotlinRegressionTests {
         val intent = SimHelper("project-id", "user-id")
             .registerLastBiometrics("module-id", "guid", createMetadata())
 
-        assertEquals(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT, intent.getAction())
+        assertEquals(Constants.SIMPRINTS_REGISTER_LAST_BIOMETRICS_INTENT, intent.action)
         assertEquals(
             setOf(
                 Constants.SIMPRINTS_PROJECT_ID,
@@ -171,7 +171,7 @@ class KotlinRegressionTests {
                 Constants.SIMPRINTS_SESSION_ID,
                 Constants.SIMPRINTS_METADATA,
             ),
-            intent.getExtras()?.keySet()
+            intent.extras?.keySet(),
         )
         assertEquals(KEY_VALUE_JSON, intent.getStringExtra(Constants.SIMPRINTS_METADATA))
     }
@@ -179,9 +179,11 @@ class KotlinRegressionTests {
     @Test
     fun enrolmentResultHandling() {
         val registration = Registration("case-id")
-        val intent = Intent().putExtras(Bundle().apply {
-            putParcelable(Constants.SIMPRINTS_REGISTRATION, registration)
-        })
+        val intent = Intent().putExtras(
+            Bundle().apply {
+                putParcelable(Constants.SIMPRINTS_REGISTRATION, registration)
+            },
+        )
 
         val result = intent.getParcelableExtra<Registration>(Constants.SIMPRINTS_REGISTRATION)
         assertEquals(registration, result)
@@ -190,9 +192,11 @@ class KotlinRegressionTests {
     @Test
     fun identificationResultHandling() {
         val identification = Identification("case-id", 12, Tier.TIER_1)
-        val intent = Intent().putExtras(Bundle().apply {
-            putParcelableArrayList(Constants.SIMPRINTS_IDENTIFICATIONS, arrayListOf(identification))
-        })
+        val intent = Intent().putExtras(
+            Bundle().apply {
+                putParcelableArrayList(Constants.SIMPRINTS_IDENTIFICATIONS, arrayListOf(identification))
+            },
+        )
 
         val result =
             intent.getParcelableArrayListExtra<Identification>(Constants.SIMPRINTS_IDENTIFICATIONS)
@@ -202,9 +206,11 @@ class KotlinRegressionTests {
     @Test
     fun verificationResultHandling() {
         val verification = Verification(42, Tier.TIER_3, "case-id")
-        val intent = Intent().putExtras(Bundle().apply {
-            putParcelable(Constants.SIMPRINTS_VERIFICATION, verification)
-        })
+        val intent = Intent().putExtras(
+            Bundle().apply {
+                putParcelable(Constants.SIMPRINTS_VERIFICATION, verification)
+            },
+        )
 
         val result =
             intent.getParcelableExtra<Verification>(Constants.SIMPRINTS_VERIFICATION)
@@ -214,9 +220,11 @@ class KotlinRegressionTests {
     @Test
     fun refusalResultHandling() {
         val refusalForm = RefusalForm("reason", "extra")
-        val intent = Intent().putExtras(Bundle().apply {
-            putParcelable(Constants.SIMPRINTS_REFUSAL_FORM, refusalForm)
-        })
+        val intent = Intent().putExtras(
+            Bundle().apply {
+                putParcelable(Constants.SIMPRINTS_REFUSAL_FORM, refusalForm)
+            },
+        )
 
         val result = intent.getParcelableExtra<RefusalForm>(Constants.SIMPRINTS_REFUSAL_FORM)
         assertEquals(refusalForm, result)
