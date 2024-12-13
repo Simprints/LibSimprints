@@ -21,9 +21,8 @@ import android.content.Intent
 @Deprecated("Use SimprintsContract instead")
 data class SimHelper(
     private val projectId: String,
-    private val userId: String
+    private val userId: String,
 ) {
-
     /**
      * Builds a new {@link Intent} to make a registration call-out to Simprints ID.
      * This intent will start an activity that returns a {@link Registration} object.
@@ -119,7 +118,9 @@ data class SimHelper(
         .putExtra(Constants.SIMPRINTS_PROJECT_ID, projectId)
         .putExtra(Constants.SIMPRINTS_USER_ID, userId)
 
-    private fun Intent.appendOptionalMetadata(metadata: Metadata?) =
-        if (metadata == null) this
-        else putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    private fun Intent.appendOptionalMetadata(metadata: Metadata?) = if (metadata == null) {
+        this
+    } else {
+        putExtra(Constants.SIMPRINTS_METADATA, metadata.toString())
+    }
 }

@@ -7,7 +7,6 @@ package com.simprints.libsimprints.contracts
  * response data format based on the calling app integration version.
  */
 object VersionsList {
-
     /**
      * In this version Activity contracts were introduced with a new set of returned data classes.
      * The new API uses JSON as marshalling format instead of parcelable to make

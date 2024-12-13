@@ -13,7 +13,6 @@ data class Verification(
     val tier: Tier,
     val isSuccess: Boolean,
 ) {
-
     fun toJson(): String = asJsonObject {
         it.put(KEY_GUID, guid)
         it.put(KEY_TIER, tier.name)

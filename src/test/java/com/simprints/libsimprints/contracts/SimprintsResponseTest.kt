@@ -17,7 +17,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class SimprintsResponseTest {
-
     @Test
     fun `correctly parses null intent`() {
         val intent: Intent? = null
@@ -39,7 +38,7 @@ class SimprintsResponseTest {
         val intent = Intent().putExtra(
             // This should be ignored in final data
             Constants.SIMPRINTS_REFUSAL_FORM,
-            RefusalForm("reason", "action").toJson()
+            RefusalForm("reason", "action").toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_UNEXPECTED_ERROR)
 
@@ -54,7 +53,7 @@ class SimprintsResponseTest {
     fun `correctly parses refusal intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_REFUSAL_FORM,
-            RefusalForm("reason", "action").toJson()
+            RefusalForm("reason", "action").toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
@@ -69,7 +68,7 @@ class SimprintsResponseTest {
     fun `correctly parses enrolment intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_ENROLMENT,
-            Enrolment("guid").toJson()
+            Enrolment("guid").toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
@@ -84,7 +83,7 @@ class SimprintsResponseTest {
     fun `correctly parses identification intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_IDENTIFICATIONS,
-            listOf(Identification("guid", 42f, Tier.TIER_1)).toJson()
+            listOf(Identification("guid", 42f, Tier.TIER_1)).toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
@@ -99,7 +98,7 @@ class SimprintsResponseTest {
     fun `correctly parses verification intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_VERIFICATION,
-            Verification("guid", 42f, Tier.TIER_1, true).toJson()
+            Verification("guid", 42f, Tier.TIER_1, true).toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 

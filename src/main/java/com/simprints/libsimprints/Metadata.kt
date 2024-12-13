@@ -13,11 +13,12 @@ import org.json.JSONObject
 data class Metadata(
     private var json: JSONObject = JSONObject(),
 ) {
-
     /**
      * Thrown when provided meta-data cannot be marshalled or unmarshalled from the intent extras.
      */
-    class InvalidMetadataException(message: String) : RuntimeException(message)
+    class InvalidMetadataException(
+        message: String,
+    ) : RuntimeException(message)
 
     /**
      * Constructs a new Metadata object with key/value mappings from a JSON object string.
@@ -40,8 +41,9 @@ data class Metadata(
         val keys = json.keys()
         while (keys.hasNext()) {
             val key = keys.next()
-            if (json.optJSONArray(key) != null || json.optJSONObject(key) != null)
+            if (json.optJSONArray(key) != null || json.optJSONObject(key) != null) {
                 throw InvalidMetadataException("Only boolean, string, integer and floating point values are allowed.")
+            }
         }
     }
 
@@ -52,7 +54,10 @@ data class Metadata(
      * @param value a boolean.
      * @return this object.
      */
-    fun put(key: String, value: Boolean) = putObject(key, value)
+    fun put(
+        key: String,
+        value: Boolean,
+    ) = putObject(key, value)
 
     /**
      * Adds a new key/double value mapping to this metadata object, replacing any mapping with the same key.
@@ -61,7 +66,10 @@ data class Metadata(
      * @param value a finite double. May not be NaNs or infinities.
      * @return this object.
      */
-    fun put(key: String, value: Double) = putObject(key, value)
+    fun put(
+        key: String,
+        value: Double,
+    ) = putObject(key, value)
 
     /**
      * Adds a new key/long value mapping to this metadata object, replacing any mapping with the same key.
@@ -70,7 +78,10 @@ data class Metadata(
      * @param value a long.
      * @return this object.
      */
-    fun put(key: String, value: Long) = putObject(key, value)
+    fun put(
+        key: String,
+        value: Long,
+    ) = putObject(key, value)
 
     /**
      * Adds a new key/string value mapping to this metadata object, replacing any mapping with the same key.
@@ -79,9 +90,15 @@ data class Metadata(
      * @param value a non-null string.
      * @return this object.
      */
-    fun put(key: String, value: String) = putObject(key, value)
+    fun put(
+        key: String,
+        value: String,
+    ) = putObject(key, value)
 
-    private fun putObject(key: String, value: Any): Metadata {
+    private fun putObject(
+        key: String,
+        value: Any,
+    ): Metadata {
         try {
             json.put(key, value)
         } catch (e: JSONException) {

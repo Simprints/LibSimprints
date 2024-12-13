@@ -26,10 +26,14 @@ import androidx.activity.result.contract.ActivityResultContract
  *
  * @see [registerForActivityResult]
  */
-class SimprintsContract() : ActivityResultContract<SimprintsRequest, SimprintsResponse>() {
+class SimprintsContract : ActivityResultContract<SimprintsRequest, SimprintsResponse>() {
+    override fun createIntent(
+        context: Context,
+        input: SimprintsRequest,
+    ): Intent = input.toIntent()
 
-    override fun createIntent(context: Context, input: SimprintsRequest): Intent = input.toIntent()
-
-    override fun parseResult(resultCode: Int, intent: Intent?): SimprintsResponse =
-        SimprintsResponse.fromIntent(intent, resultCode)
+    override fun parseResult(
+        resultCode: Int,
+        intent: Intent?,
+    ): SimprintsResponse = SimprintsResponse.fromIntent(intent, resultCode)
 }

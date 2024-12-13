@@ -6,10 +6,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
 class IdentificationTest {
-
     @Test
     fun `test identification parcelling`() {
         val expected = Identification("case-id", 99, Tier.TIER_1)
@@ -17,7 +15,6 @@ class IdentificationTest {
 
         assertEquals(expected, actual)
     }
-
 
     @Test
     fun `test verification confidence`() {

@@ -14,7 +14,6 @@ data class Identification(
     val confidence: Float,
     val tier: Tier,
 ) : Comparable<Identification> {
-
     override fun compareTo(other: Identification): Int = when {
         confidence == other.confidence -> 0
         confidence < other.confidence -> 1
@@ -34,12 +33,11 @@ data class Identification(
             }
         }.let { JSONArray(it) }.toString()
 
-        fun fromJson(jsonString: String): List<Identification>? =
-            fromJsonArrayString(jsonString) { json ->
-                val guid = json.getString(KEY_GUID)
-                val tier = json.getString(KEY_TIER).let { Tier.valueOf(it) }
-                val confidence = json.getDouble(KEY_CONFIDENCE).toFloat()
-                Identification(guid, confidence, tier)
-            }
+        fun fromJson(jsonString: String): List<Identification>? = fromJsonArrayString(jsonString) { json ->
+            val guid = json.getString(KEY_GUID)
+            val tier = json.getString(KEY_TIER).let { Tier.valueOf(it) }
+            val confidence = json.getDouble(KEY_CONFIDENCE).toFloat()
+            Identification(guid, confidence, tier)
+        }
     }
 }

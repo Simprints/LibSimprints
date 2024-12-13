@@ -8,7 +8,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class RegistrationTest {
-
     @Test
     fun `test registration parcelling`() {
         val expected = Registration("case-id")

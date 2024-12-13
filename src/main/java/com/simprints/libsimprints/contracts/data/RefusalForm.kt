@@ -4,7 +4,6 @@ data class RefusalForm(
     val reason: String,
     val extra: String,
 ) {
-
     fun toJson(): String = asJsonObject {
         it.put(KEY_REASON, reason)
         it.put(KEY_EXTRA, extra)
@@ -13,7 +12,6 @@ data class RefusalForm(
     companion object {
         private const val KEY_REASON = "reason"
         private const val KEY_EXTRA = "extra"
-
 
         fun fromJson(jsonString: String): RefusalForm? = fromJsonString(jsonString) { json ->
             val reason = json.getString(KEY_REASON)

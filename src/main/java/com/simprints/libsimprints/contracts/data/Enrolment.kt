@@ -3,7 +3,6 @@ package com.simprints.libsimprints.contracts.data
 data class Enrolment(
     val guid: String,
 ) {
-
     fun toJson(): String = asJsonObject {
         it.put(KEY_GUID, guid)
     }.toString()

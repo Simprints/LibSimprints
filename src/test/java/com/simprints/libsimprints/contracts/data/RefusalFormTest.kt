@@ -7,7 +7,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class RefusalFormTest {
-
     @Test
     fun `test refusal parcelling`() {
         val expected = RefusalForm("reason", "extra")

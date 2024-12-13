@@ -24,22 +24,21 @@ data class SimprintsResponse(
     val resultCode: Int,
     val biometricsComplete: Boolean = false,
     val sessionId: String? = null,
-
     // Request-specific data - only one field will be non-null
     val enrolment: Enrolment? = null,
     val verification: Verification? = null,
     val identifications: List<Identification>? = null,
     val refusal: RefusalForm? = null,
-
     // Co-sync data
     val subjectActions: String? = null,
 ) {
-
     companion object {
-
         @Suppress("UNCHECKED_CAST")
         @JvmStatic
-        fun fromIntent(intent: Intent?, resultCode: Int): SimprintsResponse {
+        fun fromIntent(
+            intent: Intent?,
+            resultCode: Int,
+        ): SimprintsResponse {
             if (resultCode != Constants.SIMPRINTS_OK) {
                 return SimprintsResponse(resultCode = resultCode)
             }
@@ -51,11 +50,11 @@ data class SimprintsResponse(
                 resultCode = resultCode,
                 biometricsComplete = intent.getBooleanExtra(
                     Constants.SIMPRINTS_BIOMETRICS_COMPLETE_CHECK,
-                    false
+                    false,
                 ),
                 sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
-
-                refusal = intent.getStringExtra(Constants.SIMPRINTS_REFUSAL_FORM)
+                refusal = intent
+                    .getStringExtra(Constants.SIMPRINTS_REFUSAL_FORM)
                     ?.let { RefusalForm.fromJson(it) },
                 enrolment = intent
                     .getStringExtra(Constants.SIMPRINTS_ENROLMENT)
@@ -66,7 +65,6 @@ data class SimprintsResponse(
                 verification = intent
                     .getStringExtra(Constants.SIMPRINTS_VERIFICATION)
                     ?.let { Verification.fromJson(it) },
-
                 subjectActions = intent.getStringExtra(Constants.SIMPRINTS_COSYNC_SUBJECT_ACTIONS),
             )
         }

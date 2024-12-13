@@ -11,12 +11,14 @@ data class Verification @JvmOverloads constructor(
     val tier: Tier,
     val guid: String,
 ) : Parcelable {
-
     fun getConfidence(): Float = confidence.toFloat()
 
     override fun describeContents(): Int = 0
 
-    override fun writeToParcel(dest: Parcel, flags: Int) {
+    override fun writeToParcel(
+        dest: Parcel,
+        flags: Int,
+    ) {
         dest.writeInt(this.confidence)
         dest.writeInt(this.tier.ordinal)
         dest.writeString(this.guid)
@@ -25,7 +27,6 @@ data class Verification @JvmOverloads constructor(
     companion object {
         @JvmField
         val CREATOR = object : Creator<Verification> {
-
             override fun createFromParcel(parcel: Parcel): Verification? {
                 val confidence = parcel.readInt()
                 val tier = Tier.entries[parcel.readInt()]
