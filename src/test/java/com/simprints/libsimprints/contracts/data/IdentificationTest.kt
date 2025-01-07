@@ -11,11 +11,10 @@ class IdentificationTest {
     @Test
     fun `test enrolment parcelling`() {
         val expected = listOf(
-            Identification("case1", 99f, Tier.TIER_1),
-            Identification("case2", 70f, Tier.TIER_2),
-            Identification("case3", 50f, Tier.TIER_3),
-            Identification("case4", 30f, Tier.TIER_4),
-            Identification("case5", 10f, Tier.TIER_5),
+            Identification("case1", 99f, ConfidenceBand.HIGH),
+            Identification("case2", 70f, ConfidenceBand.MEDIUM),
+            Identification("case3", 50f, ConfidenceBand.LOW),
+            Identification("case4", 30f, ConfidenceBand.NONE),
         )
         val actual = Identification.fromJson(expected.toJson())
 

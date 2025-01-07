@@ -3,11 +3,11 @@ package com.simprints.libsimprints.contracts
 import android.content.Intent
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.simprints.libsimprints.Constants
+import com.simprints.libsimprints.contracts.data.ConfidenceBand
 import com.simprints.libsimprints.contracts.data.Enrolment
 import com.simprints.libsimprints.contracts.data.Identification
 import com.simprints.libsimprints.contracts.data.Identification.Companion.toJson
 import com.simprints.libsimprints.contracts.data.RefusalForm
-import com.simprints.libsimprints.contracts.data.Tier
 import com.simprints.libsimprints.contracts.data.Verification
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -83,7 +83,7 @@ class SimprintsResponseTest {
     fun `correctly parses identification intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_IDENTIFICATIONS,
-            listOf(Identification("guid", 42f, Tier.TIER_1)).toJson(),
+            listOf(Identification("guid", 42f, ConfidenceBand.HIGH)).toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
@@ -98,7 +98,7 @@ class SimprintsResponseTest {
     fun `correctly parses verification intent`() {
         val intent = Intent().putExtra(
             Constants.SIMPRINTS_VERIFICATION,
-            Verification("guid", 42f, Tier.TIER_1, true).toJson(),
+            Verification("guid", 42f, ConfidenceBand.HIGH, true).toJson(),
         )
         val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
 
