@@ -12,5 +12,5 @@ object VersionsList {
      * The new API uses JSON as marshalling format instead of parcelable to make
      * adding and removing data fields simpler.
      */
-    const val INITIAL_REWORK = 20240801
+    const val INITIAL_REWORK = 20250102
 }

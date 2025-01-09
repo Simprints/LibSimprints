@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 class VerificationTest {
     @Test
     fun `test verification parcelling`() {
-        val expected = Verification("case-id", 42f, Tier.TIER_4, false)
+        val expected = Verification("case-id", 42f, ConfidenceBand.HIGH, false)
         val actual = Verification.fromJson(expected.toJson())
 
         Assert.assertEquals(expected, actual)

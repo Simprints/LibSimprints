@@ -1,6 +1,6 @@
 package com.simprints.libsimprints
 
-@Deprecated("Use contracts.data.Tier instead")
+@Deprecated("Replaced by contracts.data.ConfidenceBand")
 enum class Tier {
     TIER_1,
     TIER_2,
