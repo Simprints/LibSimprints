@@ -4,7 +4,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-internal inline fun <T> T.asJsonObject(crossinline block: (JSONObject) -> JSONObject): JSONObject = JSONObject().also { block(it) }
+internal inline fun <T> T.asJsonObject(crossinline block: (JSONObject) -> Unit): JSONObject = JSONObject().also { block(it) }
 
 internal inline fun <T> fromJsonString(
     jsonString: String,
