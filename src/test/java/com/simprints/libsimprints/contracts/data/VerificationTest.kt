@@ -14,4 +14,12 @@ class VerificationTest {
 
         Assert.assertEquals(expected, actual)
     }
+
+    @Test
+    fun `test verification does not have isSuccess if null`() {
+        val expected = Verification("case-id", 42f, ConfidenceBand.HIGH, null)
+        val actual = Verification.fromJson(expected.toJson())
+
+        Assert.assertEquals(expected, actual)
+    }
 }
