@@ -4,13 +4,6 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.os.Parcelable.Creator
 
-/**
- * This constructor creates a new identification
- *
- * @param guid       Global unique id of the verified person
- * @param confidence An int containing the (matching) confidence
- * @param tier       The tier score derived from the confidence
- */
 @Deprecated("Use contracts.data.Identification instead")
 data class Identification(
     val guid: String,

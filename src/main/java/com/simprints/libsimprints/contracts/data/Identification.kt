@@ -3,7 +3,7 @@ package com.simprints.libsimprints.contracts.data
 import org.json.JSONArray
 
 /**
- * This constructor creates a new identification
+ * This constructor creates a new identification result
  *
  * @param guid           Global unique id of the verified person
  * @param confidence     An int containing the (matching) confidence
