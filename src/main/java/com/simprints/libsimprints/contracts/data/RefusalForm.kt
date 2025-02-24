@@ -1,5 +1,11 @@
 package com.simprints.libsimprints.contracts.data
 
+/**
+ * This constructor creates a new refusal form response
+ *
+ * @param reason Refusal reason chosen by user out of the provided options
+ * @param extra  Additional information provided by the user
+ */
 data class RefusalForm(
     val reason: String,
     val extra: String,

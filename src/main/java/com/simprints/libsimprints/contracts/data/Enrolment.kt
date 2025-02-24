@@ -1,5 +1,10 @@
 package com.simprints.libsimprints.contracts.data
 
+/**
+ * This constructor creates a new enrolment result
+ *
+ * @param guid Global unique id of the new enrolment
+ */
 data class Enrolment(
     val guid: String,
 ) {
