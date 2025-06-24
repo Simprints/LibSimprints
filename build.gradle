@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.10.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0"
         classpath "io.github.gradle-nexus:publish-plugin:2.0.0"
     }
 }
@@ -86,7 +86,7 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.21"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.0"
     implementation 'androidx.activity:activity-ktx:1.10.1'
 
     testImplementation "junit:junit:4.13.2"
