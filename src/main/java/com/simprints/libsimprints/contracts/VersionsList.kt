@@ -13,4 +13,9 @@ object VersionsList {
      * adding and removing data fields simpler.
      */
     const val INITIAL_REWORK = 20250102
+
+    /**
+     * In this version deviceId and app version name fields were added to the response data
+     */
+    const val ADDED_DEVICE_FIELDS = 20250200
 }
