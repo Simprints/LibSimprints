@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+
 buildscript {
     repositories {
         google()
@@ -7,7 +9,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.12.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.10"
-        classpath "io.github.gradle-nexus:publish-plugin:2.0.0"
+        classpath "com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.34.0"
     }
 }
 
@@ -77,12 +79,6 @@ android {
             initWith debug
         }
     }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
 }
 
 dependencies {
@@ -95,6 +91,44 @@ dependencies {
     testImplementation "org.robolectric:robolectric:4.16"
 }
 
-apply plugin: "io.github.gradle-nexus.publish-plugin"
 apply from: ".github/publish/publishConfig.gradle"
-apply from: ".github/publish/publish-mavencentral.gradle"
+
+// Has to be in main build file since due to importing issues
+apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: 'signing'
+
+mavenPublishing {
+    configure(new AndroidSingleVariantLibrary("release", true, true))
+    coordinates(publishedGroupId, artifact, libraryVersion)
+    pom {
+        name = artifact
+        description = libraryDescription
+        url = siteUrl
+        licenses {
+            license {
+                name = licenseName
+                url = licenseUrl
+            }
+        }
+        developers {
+            developer {
+                id = developerId
+                name = developerName
+                email = developerEmail
+            }
+        }
+        scm {
+            connection = gitUrl
+            developerConnection = gitUrl
+            url = siteUrl
+        }
+    }
+
+    // Publish to Central via the new Portal API, and auto-release if validation passes
+    publishToMavenCentral(true)
+    signAllPublications()
+}
+
+signing {
+    sign publishing.publications
+}
