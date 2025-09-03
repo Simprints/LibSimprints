@@ -24,6 +24,8 @@ data class SimprintsResponse(
     val resultCode: Int,
     val biometricsComplete: Boolean = false,
     val sessionId: String? = null,
+    val deviceId: String? = null,
+    val appVersionName: String? = null,
     // Request-specific data - only one field will be non-null
     val enrolment: Enrolment? = null,
     val verification: Verification? = null,
@@ -53,6 +55,8 @@ data class SimprintsResponse(
                     false,
                 ),
                 sessionId = intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID),
+                deviceId = intent.getStringExtra(Constants.SIMPRINTS_DEVICE_ID),
+                appVersionName = intent.getStringExtra(Constants.SIMPRINTS_APP_VERSION_NAME),
                 refusal = intent
                     .getStringExtra(Constants.SIMPRINTS_REFUSAL_FORM)
                     ?.let { RefusalForm.fromJson(it) },

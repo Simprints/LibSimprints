@@ -97,6 +97,9 @@ object Constants {
     const val SIMPRINTS_COSYNC_EVENT = "events"
     const val SIMPRINTS_COSYNC_SUBJECT_ACTIONS = "subjectActions"
 
+    const val SIMPRINTS_DEVICE_ID = "deviceId"
+    const val SIMPRINTS_APP_VERSION_NAME = "appVersionName"
+
     @Deprecated(
         "Use SIMPRINTS_ENROL_INTENT instead",
         replaceWith = ReplaceWith("SIMPRINTS_ENROL_INTENT"),

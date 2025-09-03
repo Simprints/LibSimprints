@@ -34,6 +34,20 @@ class SimprintsResponseTest {
     }
 
     @Test
+    fun `correctly parses common fields`() {
+        val intent: Intent = Intent().also {
+            it.putExtra(Constants.SIMPRINTS_SESSION_ID, "sessionId")
+            it.putExtra(Constants.SIMPRINTS_DEVICE_ID, "deviceId")
+            it.putExtra(Constants.SIMPRINTS_APP_VERSION_NAME, "version")
+        }
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
+
+        assertEquals("sessionId", result.sessionId)
+        assertEquals("deviceId", result.deviceId)
+        assertEquals("version", result.appVersionName)
+    }
+
+    @Test
     fun `correctly parses error result intent`() {
         val intent = Intent().putExtra(
             // This should be ignored in final data
