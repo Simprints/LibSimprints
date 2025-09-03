@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.12.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.10"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20"
         classpath "com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.34.0"
     }
 }
@@ -21,9 +21,9 @@ repositories {
     mavenCentral()
 }
 
-project.version = "2025.2.0"
+project.version = "2025.2.1"
 ext {
-    VERSION_CODE = 202502000
+    VERSION_CODE = 202502001
 }
 
 android {
@@ -82,7 +82,7 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.20"
     implementation 'androidx.activity:activity-ktx:1.10.1'
 
     testImplementation "junit:junit:4.13.2"
