@@ -18,17 +18,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build
-        run: ./gradlew build
-
       - name: Build Artifacts
         run: ./gradlew assembleRelease
-
-      - name: Create secrets file
-        env:
-          MAVEN_PGP_KEY_BASE64_CONTENT: ${{ secrets.MAVEN_PGP_KEY_BASE64_CONTENT }}
-          MAVEN_PGP_KEY: ${{ secrets.MAVEN_PGP_KEY }}
-        run: sudo bash -c "echo '$MAVEN_PGP_KEY_BASE64_CONTENT' | base64 -d > '$MAVEN_PGP_KEY'"
 
       - name: Publish & release to Maven Central
         run: ./gradlew publishAndReleaseToMavenCentral --no-daemon
