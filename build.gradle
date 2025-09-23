@@ -21,9 +21,9 @@ repositories {
     mavenCentral()
 }
 
-project.version = "2025.2.1"
+project.version = "2025.2.2"
 ext {
-    VERSION_CODE = 202502001
+    VERSION_CODE = 202502002
 }
 
 android {

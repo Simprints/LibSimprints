@@ -8,7 +8,7 @@
 **Installation** 
 
 ```
-implementation 'com.simprints:libsimprints:2025.2.1'
+implementation 'com.simprints:libsimprints:2025.2.2'
 ```
 
 [Documentation](https://simprints.gitbook.io/docs/development/simprints-for-developers/integrating-with-simprints)
@@ -20,5 +20,5 @@ implementation 'com.simprints:libsimprints:2025.2.1'
 maven("https://oss.sonatype.org/content/repositories/snapshots")
 
 // In app level gradle file
-implementation 'com.simprints:libsimprints:2025.2.1-SNAPSHOT'
+implementation 'com.simprints:libsimprints:2025.2.2-SNAPSHOT'
 ```
