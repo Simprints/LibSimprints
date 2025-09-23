@@ -113,18 +113,21 @@ sealed class SimprintsRequest {
      * @param userId       identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      * @param sessionId    identifies the identification session.
      * @param selectedGuid the GUID that was confirmed in the host app.
+     * @param metadata  optional metadata to attach to the registration if provided.
      */
     data class ConfirmIdentity(
         override val projectId: String,
         override val userId: String,
         val sessionId: String,
         val selectedGuid: String,
+        val metadata: Metadata? = null,
     ) : SimprintsRequest() {
         override fun toIntent() = Intent(Constants.SIMPRINTS_CONFIRM_IDENTITY_INTENT)
             .appendAuthFields(projectId, userId)
             .appendRequestMetaInformation()
             .putExtra(Constants.SIMPRINTS_SESSION_ID, sessionId)
             .putExtra(Constants.SIMPRINTS_SELECTED_GUID, selectedGuid)
+            .appendOptionalMetadata(metadata)
     }
 
     /**
