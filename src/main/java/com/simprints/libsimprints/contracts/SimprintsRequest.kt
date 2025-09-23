@@ -61,7 +61,7 @@ sealed class SimprintsRequest {
      * @param projectId identifies the project that is making the call-out. Will be checked if it matches the scanned project id upon signing-in.
      * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      * @param moduleId  identifies which module to register into.
-     * @param metadata  optional metadata to attach to the registration if provided.
+     * @param metadata  optional metadata to attach to the identification if provided.
      */
     data class Identify(
         override val projectId: String,
@@ -87,7 +87,7 @@ sealed class SimprintsRequest {
      * @param userId    identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      * @param moduleId  identifies which module to register into.
      * @param verifyId  identifies which registered beneficiary to verify.
-     * @param metadata  optional metadata to attach to the registration if provided.
+     * @param metadata  optional metadata to attach to the verification if provided.
      */
     data class Verify(
         override val projectId: String,
@@ -113,7 +113,7 @@ sealed class SimprintsRequest {
      * @param userId       identifies which user is making a request to Simprints ID. Can be any arbitrary String.
      * @param sessionId    identifies the identification session.
      * @param selectedGuid the GUID that was confirmed in the host app.
-     * @param metadata  optional metadata to attach to the registration if provided.
+     * @param metadata     optional metadata to attach to the confirmation if provided.
      */
     data class ConfirmIdentity(
         override val projectId: String,
