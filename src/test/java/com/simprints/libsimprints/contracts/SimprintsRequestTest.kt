@@ -71,6 +71,7 @@ class SimprintsRequestTest {
                 userId = "user-id",
                 sessionId = "session-id",
                 selectedGuid = "guid",
+                metadata = Metadata().put("key", "value"),
             ).toIntent()
 
         assertEquals(Constants.SIMPRINTS_CONFIRM_IDENTITY_INTENT, intent.action)
@@ -78,6 +79,7 @@ class SimprintsRequestTest {
         assertEquals("user-id", intent.getStringExtra(Constants.SIMPRINTS_USER_ID))
         assertEquals("session-id", intent.getStringExtra(Constants.SIMPRINTS_SESSION_ID))
         assertEquals("guid", intent.getStringExtra(Constants.SIMPRINTS_SELECTED_GUID))
+        assertEquals(METADATA_JSON, intent.getStringExtra(Constants.SIMPRINTS_METADATA))
     }
 
     @Test
