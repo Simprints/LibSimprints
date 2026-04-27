@@ -18,4 +18,9 @@ object VersionsList {
      * In this version deviceId and app version name fields were added to the response data
      */
     const val ADDED_DEVICE_FIELDS = 20250200
+
+    /**
+     * In this version optional external credentials field was added to identification response.
+     */
+    const val ADDED_EXTERNAL_CREDENTIALS = 20260200
 }

@@ -15,6 +15,8 @@ class IdentificationTest {
             Identification("case2", 70f, ConfidenceBand.MEDIUM),
             Identification("case3", 50f, ConfidenceBand.LOW),
             Identification("case4", 30f, ConfidenceBand.NONE),
+            Identification("case5", 30f, ConfidenceBand.HIGH, isLinkedToCredential = true),
+            Identification("case6", 30f, ConfidenceBand.LOW, isLinkedToCredential = false, isCredentialVerified = true),
         )
         val actual = Identification.fromJson(expected.toJson())
 
