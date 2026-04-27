@@ -1,17 +1,19 @@
 package com.simprints.libsimprints.contracts
 
 import android.content.Intent
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.junit.runners.*
 import com.simprints.libsimprints.Constants
 import com.simprints.libsimprints.contracts.data.ConfidenceBand
 import com.simprints.libsimprints.contracts.data.Enrolment
 import com.simprints.libsimprints.contracts.data.Identification
 import com.simprints.libsimprints.contracts.data.Identification.Companion.toJson
 import com.simprints.libsimprints.contracts.data.RefusalForm
+import com.simprints.libsimprints.contracts.data.ScannedCredential
 import com.simprints.libsimprints.contracts.data.Verification
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -121,5 +123,17 @@ class SimprintsResponseTest {
         assertNull(result.enrolment)
         assertNull(result.identifications)
         assertNotNull(result.verification)
+    }
+
+    @Test
+    fun `correctly parses MFID fields intent`() {
+        val intent = Intent()
+            .putExtra(Constants.SIMPRINTS_HAS_CREDENTIAL, true)
+            .putExtra(Constants.SIMPRINTS_SCANNED_CREDENTIAL, ScannedCredential("type", "value").toJson())
+        val result = SimprintsResponse.fromIntent(intent, Constants.SIMPRINTS_OK)
+
+        assertEquals(Constants.SIMPRINTS_OK, result.resultCode)
+        assertTrue(result.hasCredential == true)
+        assertNotNull(result.scannedCredential)
     }
 }

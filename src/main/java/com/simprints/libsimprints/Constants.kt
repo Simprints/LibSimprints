@@ -93,6 +93,9 @@ object Constants {
     // When SIMPRINTS_BIOMETRICS_COMPLETE_CHECK is true, the user has completed the Simprints flow
     const val SIMPRINTS_BIOMETRICS_COMPLETE_CHECK = "biometricsComplete"
 
+    const val SIMPRINTS_HAS_CREDENTIAL = "hasCredential"
+    const val SIMPRINTS_SCANNED_CREDENTIAL = "scannedCredential"
+
     // These two values represent data that could be null. They only apply to projects using cosync
     const val SIMPRINTS_COSYNC_EVENT = "events"
     const val SIMPRINTS_COSYNC_SUBJECT_ACTIONS = "subjectActions"
