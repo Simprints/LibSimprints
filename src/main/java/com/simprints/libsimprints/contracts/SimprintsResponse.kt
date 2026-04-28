@@ -5,6 +5,7 @@ import com.simprints.libsimprints.Constants
 import com.simprints.libsimprints.contracts.data.Enrolment
 import com.simprints.libsimprints.contracts.data.Identification
 import com.simprints.libsimprints.contracts.data.RefusalForm
+import com.simprints.libsimprints.contracts.data.ScannedCredential
 import com.simprints.libsimprints.contracts.data.Verification
 import kotlin.let
 
@@ -12,7 +13,7 @@ import kotlin.let
  * Container class for all possible response data that Simprints ID can return.
  *
  * In all cases at most one of
- * * registration: [Registration] - in case of enrolment
+ * * enrolment: [Enrolment] - in case of enrolment
  * * verification: [Verification] - in case of verification
  * * identifications: List<[Identification]> - in case of identification
  * * refusal: [RefusalForm] - in case of patient refusal
@@ -33,6 +34,9 @@ data class SimprintsResponse(
     val refusal: RefusalForm? = null,
     // Co-sync data
     val subjectActions: String? = null,
+    // MFID data
+    val hasCredential: Boolean? = null,
+    val scannedCredential: ScannedCredential? = null,
 ) {
     companion object {
         @Suppress("UNCHECKED_CAST")
@@ -70,6 +74,10 @@ data class SimprintsResponse(
                     .getStringExtra(Constants.SIMPRINTS_VERIFICATION)
                     ?.let { Verification.fromJson(it) },
                 subjectActions = intent.getStringExtra(Constants.SIMPRINTS_COSYNC_SUBJECT_ACTIONS),
+                hasCredential = intent.getBooleanExtra(Constants.SIMPRINTS_HAS_CREDENTIAL, false),
+                scannedCredential = intent
+                    .getStringExtra(Constants.SIMPRINTS_SCANNED_CREDENTIAL)
+                    ?.let { ScannedCredential.fromJson(it) },
             )
         }
     }
