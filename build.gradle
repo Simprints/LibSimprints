@@ -8,8 +8,8 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:9.2.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21"
         classpath "com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.36.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0"
     }
 }
 
@@ -77,7 +77,7 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.3.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.4.0"
     implementation "androidx.activity:activity-ktx:1.12.4"
 
     testImplementation "junit:junit:4.13.2"
